@@ -1,0 +1,42 @@
+/**==================================
+ * ====== Register Page Style =======
+ * ==================================
+ */
+
+section.content-register ,.status {
+	background-color: #fafaff;
+	border-radius: 0 20px;
+	padding:20px;
+	/*border: 4px groove #f4f4ff;*/
+    box-shadow: -1px -1px 3px gray inset, 1px 1px 1px #444;
+}
+
+section.content-register div.search-regis {
+	margin-right: -39%;
+}
+
+input[type='checkbox'] {
+	width: 16px;
+	height: 16px;
+}
+
+input[type=checkbox]:disabled {
+  width: 16px;
+  height: 16px;
+  font-size: 27px;
+  /*display: none;*/
+  background:url('/public/images/checkedbox.png');
+  position: relative;
+}
+
+input[type=checkbox]:disabled:after {
+	content: " ";
+    background: url('/public/images/checkedbox.png') no-repeat;
+    display: inline-block;
+    visibility: visible;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 0px;
+    /*border-radius: 50%;*/
+}

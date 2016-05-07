@@ -1,0 +1,31 @@
+/**
+ * Notification for student and teacher style
+ */
+ul.notifications-student li.notify-item {
+	background-color: #edeff5;
+	border: 1px solid #dddddd;
+	width: 100%;
+	padding: 15px;
+	margin-top: 5px;
+}
+
+ul.notifications-teacher li.notify-item {
+	background-color: #edeff5;
+	border: 1px solid #dddddd;
+	width: 100%;
+	padding: 15px;
+	margin-top: 5px;
+}
+
+li.notify-item {
+	background-color: #edeff5;
+	border: 1px solid #dddddd;
+	width: 100%;
+	padding: 15px;
+	margin-top: 5px;	
+}
+
+.seen {
+	background-color: #fff !important;
+	border: 1px solid #dddddd;
+}

@@ -1,0 +1,163 @@
+/*==================================
+ *======= Admin Panel Style ========
+ *==================================
+ */
+
+/**
+ * header style
+ */
+header.admin-header {
+	height: 40px;
+}
+
+header.admin-header h3 {
+	color: #fff;
+	text-transform:uppercase;
+	line-height: 40px;
+	font-family: "Great Vibes", cursive;
+	text-shadow: 0 2px 6px rgba(0,0,0,.5);
+}
+
+header.admin-header .logo {
+ 	height: 100px;
+ 	background: #f3f3f3 !important;
+ }
+
+/*header.admin-header .circle {
+	border-radius: 50%;
+	margin-top: 10%;
+	width: 80%;
+	height: 70%;
+}*/
+
+/**
+ * Sidebar 
+ */
+aside.main-sidebar .sidebar-menu {
+	margin-top: 70px;
+}
+
+aside.main-sidebar .header {
+	font-size: 15px;
+	font-weight: bold;
+	font-family: sans-serif;
+}
+
+/**
+ * Content
+ */
+
+div.content-wrapper {
+	margin-top: 92px;
+}
+
+.content-header {
+	margin-bottom: 20px;
+}
+
+div.data-content tr.row-content td:last-child {
+	width: 20%;
+}
+
+div.data-content .box {
+	padding: 20px;
+}
+
+div.data-content .row_slide {
+	margin-left: 30px;
+}
+
+nav {
+	height: 150px;
+}
+/*===============================
+============ Notify style =======
+=================================*/
+
+#nav{list-style:none;margin-left: 70%;padding: 0px;}
+#nav li {
+float: left;
+margin-right: 15px;
+font-size: 14px;
+margin-top: 14%;
+/*font-weight:bold;*/
+}
+#nav li a{color:#333333;text-decoration:none}
+#nav li a:hover{color:#006699;text-decoration:none}
+#notification_li
+{
+position:relative;
+display: inline-block;
+}
+#notificationContainer 
+{
+background-color: #fff;
+border: 1px solid rgba(100, 100, 100, .4);
+-webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+overflow: visible;
+position: absolute;
+top: 30px;
+margin-left: -170px;
+width: 400px;
+z-index: -1;
+display: none; 
+height: 350px;
+}
+#notificationContainer:before {
+content: '';
+display: block;
+position: absolute;
+width: 0;
+height: 0;
+color: transparent;
+border: 10px solid black;
+border-color: transparent transparent white;
+margin-top: -20px;
+margin-left: 188px;
+}
+#notificationTitle
+{
+font-weight: bold;
+padding: 8px;
+font-size: 13px;
+background-color: #ffffff;
+/*position: fixed;*/
+z-index: 1000;
+width: 384px;
+border-bottom: 1px solid #dddddd;
+}
+#notificationsBody
+{
+padding: 33px 0px 0px 0px !important;
+min-height:300px;
+}
+#notificationFooter
+{
+background-color: #e9eaed;
+text-align: center;
+font-weight: bold;
+padding: 8px;
+font-size: 12px;
+border-top: 1px solid #dddddd;
+}
+
+ul.list-notify > li.notify-item {
+	margin-top: 0px !important;
+    /* margin-left: 10px; */
+    border: 1px solid #dddddd;
+    padding: 10px;
+    width: 100%;
+    background: #edeff5;
+}
+
+ul.list-notify > li.notify-item:hover {
+	cursor: pointer;
+}
+
+ul.list-notify > li.notify-item:first-child {
+	margin-top: -30px !important;
+}
+
+ul.list-notify > li.notify-item > span.time {
+	margin-left: 30px;
+}

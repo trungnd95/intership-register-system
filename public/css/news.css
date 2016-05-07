@@ -1,0 +1,38 @@
+/**==================================
+ * ========== News Style ============
+ * ==================================
+ */
+
+.news,.verify,.topic {
+	background-color: #fafaff;
+	border-radius: 0 20px;
+	color: Green;
+	border: 4px groove #f4f4ff;
+    box-shadow: -1px -1px 3px gray inset, 1px 1px 1px #444;
+    padding: 10px 20px;
+    padding-left: 50px;
+}
+
+.news div.share ul.list {
+	margin-top: -6%;
+}
+
+.news ul {
+	
+	margin-right: 4%;
+}
+
+.news div.share > ul > li {
+	float: left;
+	margin-right: 5px;
+}
+
+.news ul > li > i {
+	border: 1px  solid gray;
+	display: inline-block;
+}
+
+.news .date-post {
+	margin-left: 7%;
+	opacity: 0.7;
+}

@@ -1,0 +1,166 @@
+/*=========================
+*========TABLE OF CONTENT===
+============================
+#website 
+	#header 
+		#nav
+	#content
+	#footer#footer
+#/website
+
+/*=======================
+========Basic Styles======
+===========================*/
+*{
+	margin: 0px auto;
+	padding: 0px;
+}
+
+.container {
+	margin: 0px auto;
+}
+
+a {
+	text-decoration: none;
+}
+
+ul  {
+	list-style-type: none;
+}
+
+body {
+	background: #d2d6de none repeat scroll 0 0;
+	 /*height: 100%;*/
+	 height: auto;
+}
+
+.alert-danger {
+	background: red;
+}
+
+.alert-success {
+	background: #008d4c;
+	opacity: 0.8;
+}
+/*=====================
+========header ============
+==============================*/
+header.templates {
+	text-shadow: 0 2px 6px rgba(0,0,0,.5);
+}
+
+header.templates nav {
+	height: 120px;
+}
+
+header.templates nav h1 {
+	color: #044c79;
+	text-transform:uppercase;
+	line-height:80px;
+	font-family: "Great Vibes", cursive;
+}
+
+header.templates nav a img {
+	float: left;
+	margin-left: 20px;
+
+}
+
+header.templates nav a p {
+	display: inline-block;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+header.templates nav a p span {
+	color: #044c79;
+	text-shadow: 1px 1px 5px 1px #044c79;
+}
+header.templates nav a p span:nth-child(1) {
+	font-size: 25px;
+	margin-bottom: 10px;
+	display: inline-block;
+}
+
+header.templates nav a p span:nth-child(2) {
+	padding-left: 40px;
+}
+
+section.content-header {
+	padding-top: 40px;
+}
+
+/*==================================
+=========footer=====================
+===================================*/
+footer#footer {
+   /*position:relative;*/
+   left:0px;
+   bottom:0px;
+   height:110px;
+   width:100%;
+   background:#999;
+   padding-left: 60px;
+   padding-top: 10px;
+}
+
+footer#footer .uet-home {
+	position:absolute;
+	bottom: 10px;
+}
+
+footer#footer ul.list-icon li {
+	float: left;
+	width: 20px;
+	height: 20px;
+	background: #fff;
+	margin: 5px;
+	border-radius: 5px;
+}
+
+footer#footer ul.list-icon:after {
+	content:'';
+	display: table;
+	clear:both;
+}
+
+footer#footer img {
+	margin-top: -9px;
+}
+
+footer#footer span.developed {
+	font-weight: bold;
+	font-size: 12px !important;
+}
+
+/*==============================================
+================= Notify Style =================
+================================================*/
+div.notify {
+	border: 1px solid #000;
+    display: inline-block;
+    padding: 20px;
+    width: 400px;
+    position: fixed;
+    bottom: 20px;
+    right: 0px;
+    background: #fff;
+    border-radius: 10px;
+   	opacity: 0; 	 	
+   	transition: opacity 2s ease-out;
+   	/*display: none;*/
+}
+
+.notify_active {
+   	opacity: 1 !important;
+   	display: inline-block !important;
+}
+/*div.notify:after {
+	content:'';
+	width: 0; 
+	height: 0; 
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	
+	border-bottom: 5px solid black;
+}*/
