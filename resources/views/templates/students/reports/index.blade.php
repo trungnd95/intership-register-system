@@ -1,6 +1,10 @@
 @extends('templates.layouts.master')
 @section('head.title','Báo cáo hàng tuần')
-
+@if(Auth::guard('teachers')->getUser() == null)
+	@section('breadcrumbs',Breadcrumbs::render('report'))
+@else 
+	@section('breadcrumbs_teacher',Breadcrumbs::render('student_report',$student))
+@endif
 @section('templates.body.content')
 	<div class="report">
 		<div class="report-header">
@@ -11,7 +15,10 @@
 			{{-- <div id="accordion"> --}}
 			@if(count($reports) > 0)
 			<div class="new-report">
-				<a href="{{route('student.report.add',[Auth::user()->id])}}" class="btn btn-primary" id="new_ifExist">Tạo báo cáo mới</a>
+				@if(Auth::guard('teachers')->getuser() == null )
+					<a href="{{route('student.report.add',[Auth::user()->id])}}" class="btn btn-primary" id="new_ifExist">Tạo báo cáo mới</a>
+				@endif
+
 			</div>
 			<div id="accordion">
 				@foreach($reports as $report)

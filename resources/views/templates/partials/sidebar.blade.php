@@ -14,7 +14,19 @@
 				</div>
 
 				<div class="btn-group">
-					<a href="{{route('student.cv.edit',[Auth::user()->id])}}">
+					<?php 
+						$cv = App\CV::where('user_id','=',Auth::user()->id)->get();
+						if(count($cv) > 0)
+						{
+							$href =  route('student.cv.view',Auth::user()->id);
+							$target = '_blank';
+						}else {
+							$href= route('student.cv.init',Auth::user()->id);
+							$target = "_self";
+						}
+
+					?>
+					<a href="{{$href}}" target="{{$target}}">
 						<button type="button" class="btn btn-nav">
 							<span class="glyphicon glyphicon-file"></span>
 							<p>CV</p>

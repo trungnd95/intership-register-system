@@ -34,6 +34,7 @@ class UserController extends Controller
     public function seeProfile($id)
     {
         $user =  User::select('*')->where('id','=',$id)->first();
+        // dd($user);
         return view('templates.students.profile.profile',compact('user'));
     }
 

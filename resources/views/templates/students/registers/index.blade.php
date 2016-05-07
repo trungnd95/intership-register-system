@@ -1,6 +1,6 @@
 @extends('templates.layouts.master')
 @section('head.title','Tin tức tuyển dụng')
-
+@section('breadcrumbs',Breadcrumbs::render('register'))
 @section('templates.body.content')
 <section class="content-register">
 	<div class="row">

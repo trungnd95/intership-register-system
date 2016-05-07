@@ -1,0 +1,10 @@
+ul.under_nav div.breadcrumbs li {
+	/*background-color: #fff;
+    border-color: #ddd #ddd transparent;
+    border-image: none;
+    border-style: solid;
+    border-width: 1px;
+    color: #555;*/
+    display: inline-block;
+    padding: 15px;
+}

@@ -24,6 +24,15 @@ class CvController extends Controller
     // }
 
     /**
+     * [init description]
+     * @return [type] [description]
+     */
+    public function init()
+    {
+        return view('templates.students.cv.init');
+    }
+
+    /**
      * Function get cv outline view 
      * @param  $id : indentify student
      * @return
@@ -33,6 +42,74 @@ class CvController extends Controller
         $cv = User::find($id)->load('cv');
         return view('templates.students.cv.view',compact('cv'));
     }   
+
+    /**
+     * [create description]
+     * @return [type] [description]
+     */
+    public function create($id)
+    {
+        return view('templates.students.cv.create',compact('id'));
+    }
+
+    /**
+     * [store description]
+     * @return [type] [description]
+     */
+    public function store($user_id)
+    {
+        $validator = Validator::make(Request::all(),[
+            'name'              => 'required|min:6',
+            'email'             => 'required|email',
+            'address'           => 'required',
+            'short_selfintro'   => 'required',
+            'education'         => 'required',
+            'skills'            => 'required',
+            'technical'         => 'required',
+            'hobbies'           => 'required',
+
+        ],[
+           'name.required'      => 'Bạn chưa nhập tên của mình',
+           'name.min'           => 'Tên quá ngắn',    
+            'email.required'    => 'Bạn chưa nhập email',
+            'email.email'       => 'Email không đúng định dạng',
+            'address.required'  => 'Bạn chưa nhập quê quán',
+            'short_selfintro.required'   => 'Hãy giới thiệu 1 vài điều ngắn gọn về bản thân',
+            'education.required'=> 'Hãy tóm tắt ngắn gọn quá trình học tập. Bắt buộc',
+            'skills.required'   => 'Hãy nêu những kĩ năng về chuyên ngành của bạn. Nếu không có thì ghi không có',
+            'technical.required'=> 'Nêu các công nghệ mà bạn  đã sử dụng',
+            'hobbies.required'  => 'Tóm tắt ngắn gọn về sở thích của cá nhân. Những lúc rảnh rỗi', 
+        ]);
+        if($validator->fails())
+        {   
+            Alert::error("Xảy ra lỗi khi tạo hồ sơ. Xem thông báo lỗi và sửa lại")->persistent("Close");
+            return back()->withInput()->withErrors($validator);
+        }
+        $cv = new Cv;
+        if(Request::file('image'))
+        {
+            $image = Request::file('image')->getClientOriginalName();
+            $des = base_path().'/public/upload/images/students/';
+            Request::file('image')->move($des,Request::file('image')->getClientOriginalName());
+            $cv->image = $image;
+        }
+        $cv->name = Request::get('name');
+        
+        $cv->email  = Request::get('email');
+        $cv->address= Request::get('address');
+        $cv->personal_website = Request::get('personal_website');
+        $cv->short_selfintro = Request::get('short_selfintro');
+        $cv->education = Request::get('education');
+        $cv->skills = Request::get('skills');
+        $cv->technical = Request::get('technical');
+        $cv->experiences = Request::get('experiences');
+        $cv->hobbies = Request::get('hobbies');
+        $cv->others = Request::get('others');
+        $cv->user_id = $user_id;
+        $cv->save();
+        Alert::success('Tạo thành công')->persistent("Close");
+        return redirect()->route('student.cv.view',$user_id);
+    }
 
     /**
      * Function to get view edit form

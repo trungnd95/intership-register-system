@@ -119,11 +119,19 @@ class AuthController extends Controller
             $email      .= '@vnu.edu.vn'; 
             $password   = Request::get('password');
             $confirmation_code = str_random(10);
-            $user_exist =  User::select('*')->where('email','=',$email)->get();
+
+            $usernameExist =  User::select('email')->where('user_name','=',$username)->get();
+            if(count($usernameExist) != 0)
+            {
+               return response()->json('Tài khoản đã bị trùng'); 
+            }
+
+            $user_exist =  User::select('email')->where('email','=',$email)->get();
             if(count($user_exist) != 0)
             {
                return response()->json('Email đã có người đăng kí'); 
             }
+
             User::create([
                 'user_name'     => $username,
                 // 'full_name'     => '',
@@ -136,7 +144,7 @@ class AuthController extends Controller
                 // 'avatar'        => '',
                 'confirmed'     => 0,
                 'confirmation_code'=> $confirmation_code,
-                'teacher_id'    => 1
+                // 'teacher_id'    => 1
             ]);
 
             /**

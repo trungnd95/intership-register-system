@@ -33,6 +33,7 @@
 	<link href="{{asset('/public/css/register.css')}}" rel="stylesheet"/>
 	<link href="{{asset('/public/css/notification.css')}}" rel="stylesheet"/>
 	<link href="{{asset('/public/css/rightbar.css')}}" rel="stylesheet"/>
+	<link href="{{asset('/public/css/breadcrumbs.css')}}" rel="stylesheet"/>
 	<!--JQuery UI -->
 	<link href="{{asset('/public/lib/jquery-ui/jquery-ui.min.css')}}" rel="stylesheet"/>
 	<!-- CKeditor , Ckfinder-->

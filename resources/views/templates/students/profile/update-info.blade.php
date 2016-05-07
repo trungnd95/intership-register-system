@@ -1,5 +1,6 @@
 @extends('templates.layouts.master')
 @section('head.title', 'Cập nhật thông tin cá nhân')
+@section('breadcrumbs',Breadcrumbs::render('update-profile'))
 @section('templates.body.content')
 <form role="form" method="POST" action ="{{route('student.store',[$user->id])}}" enctype="multipart/form-data" class="form-inline col-md-10 go-right" id="form-update" style="color: Green;background-color:#FAFAFF;border-radius:0px 22px 22px 22px;">
 	<h2>Thông tin cá nhân</h2>

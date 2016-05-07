@@ -11,7 +11,7 @@
 					<div class="col-xs-12 col-sm-6 col-md-8">
 						@include('auth.partials.slide')
 					</div>
-					<div class="col-xs-12 col-sm-6 col-md-4">
+					<div class="col-xs-12 col-sm-6 col-md-4" style="">
 						@yield('body.content')
 					</div>
 				</div>

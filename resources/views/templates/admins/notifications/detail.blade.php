@@ -13,7 +13,7 @@
 				<p>{{$notificationAdmin->message}}</p>
 				<span>Vào lúc {{$notificationAdmin->created_at}}</span>	
 				<?php $user = App\User::findOrFail($notificationAdmin->user_id)?><br/><hr/>
-				<p ><a href="{{route('admin.notify.cvView',[$user->id])}}" target="_blank">Xem CV của {{$user->full_name}}</a></p>
+				<p ><a href="{{route('admin.notify.cvView',[$user->id])}}" target="_blank">Xem CV của {{($user->full_name != '') ? $user->full_name : $user->user_name }}</a></p>
 			</div><!-- /.box-body -->
 		</div><!-- /.box -->
 		

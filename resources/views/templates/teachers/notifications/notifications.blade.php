@@ -1,6 +1,6 @@
 @extends('templates.layouts.master')
 @section('head.title','Thông báo')
-
+@section('breadcrumbs_teacher',Breadcrumbs::render('notifications'))
 @section('templates.body.content')
 <section class="notificationsTeacher">
 	<div class="row">

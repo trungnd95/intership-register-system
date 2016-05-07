@@ -1,6 +1,6 @@
 @extends('templates.layouts.master')
 @section('head.title','Tình trạng đăng kí')
-
+@section('breadcrumbs',Breadcrumbs::render('status'))
 @section('templates.body.content')
 	<div class="verify">
 		<h5>Thông báo</h5>

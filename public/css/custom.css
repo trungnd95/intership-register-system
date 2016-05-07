@@ -39,7 +39,8 @@ div.space .under_nav {
 .right-nav {
   position: absolute;
   z-index: 100;
-  right: 40px;
+  right: 20px;
+  top: -28px;
 }
 
 .right-nav li {

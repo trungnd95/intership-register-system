@@ -3,7 +3,10 @@
 @section ('auth.body.title','Quản trị viên')
 
 @section('auth.body.content')
-<div class="login-box-body">
+<div class="login-box-body" style="/*margin-left: -20px;*/
+  -webkit-box-shadow: -7px 15px 18px -4px rgba(0,0,0,0.62);
+  -moz-box-shadow: -7px 15px 18px -4px rgba(0,0,0,0.62);
+  box-shadow: -7px 15px 18px -4px rgba(0,0,0,0.62) !important;">
     <p class="login-box-msg">Đăng nhập để vào panel quản lí</p>
     @if (session('status'))
     <div class="alert alert-success">

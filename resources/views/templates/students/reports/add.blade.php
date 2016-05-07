@@ -1,6 +1,6 @@
 @extends('templates.layouts.master')
 @section('head.title','Báo cáo hàng tuần')
-
+@section('breadcrumbs',Breadcrumbs::render('report'))
 @section('templates.body.content')
 	<div class="report">
 		<div class="report-header">

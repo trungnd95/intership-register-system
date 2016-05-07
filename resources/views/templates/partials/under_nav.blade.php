@@ -2,8 +2,11 @@
 	<div class="col-md-12">
 		<div class="space">
 			<ul class="nav nav-tabs under_nav">
-				<li class="active"><a href=""><i class="fa fa-home"></i>Home</a></li>
-				<li><a href="#">Breadcrumb</a></li>
+				@if(Auth::guard('teachers')->getUser() == null)
+					@yield('breadcrumbs')
+				@else 
+					@yield('breadcrumbs_teacher')
+				@endif
 				<div class="right-nav">
 					<li class="instruct"><a href="#"><i class="fa fa-book"></i>Hướng dẫn</a></li>
 					<li class="feedback"><a href="{{(Auth::guard('teachers')->getUser() == null) ? route('student.feedback.getForm') : route('teacher.feedback.getForm')}}"><i class="fa fa-comment"></i>Phản hồi</a></li>

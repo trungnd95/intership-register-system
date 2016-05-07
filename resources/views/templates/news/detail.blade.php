@@ -24,8 +24,10 @@
 			</footer>
 		</ariticle>
 	</div>
+	
 	<div class="clearfix"></div>
 	<div class="related-news" >
+		<hr/>
 		<h5 style="opacity:.7">Tin tức liên quan</h5>
 		<ul class="list-related">
 			@foreach($relateds as $related)

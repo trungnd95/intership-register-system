@@ -1,4 +1,7 @@
-<div style="">
+<div style="/*margin-left: -20px;*/
+	-webkit-box-shadow: -7px 15px 18px -4px rgba(0,0,0,0.62);
+	-moz-box-shadow: -7px 15px 18px -4px rgba(0,0,0,0.62);
+	box-shadow: -7px 15px 18px -4px rgba(0,0,0,0.62) !important;">
 	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
@@ -14,7 +17,7 @@
 			<div class="item active">
 				<img src="{{ asset($slides[0]->image)}}" alt="" style="width:700px;height:350px;overflow: hidden">
 				<div class="carousel-caption">
-					<a href="{{$slides[0]->link}}">{{$slides[0]->description}}</a>
+					<a href="http://{{$slides[0]->description}}" target="_blank">{{$slides[0]->description}}</a>
 				</div>
 			</div>
 			<?php unset($slides[0]);?>
@@ -22,7 +25,7 @@
 				<div class="item ">
 					<img src="{{ asset($slide->image)}}" alt="" style="width:700px;height:350px; overflow: hidden" >
 					<div class="carousel-caption">
-						<a href="{{$slide->link}}">{{$slide->description}}</a>
+						<a href="http://{{$slide->description}}" target="_blank">{{$slide->description}}</a>
 					</div>
 				</div>
 			@endforeach

@@ -40,4 +40,5 @@ $(document).ready(function(){
 	html = 'Hiển thị <select  name="dataTable_length" aria-controls="dataTable" class="form-control input-sm">' + html + '</select> kết quả / 1 trang';
     $('#dataTable_length').find('label').html(html);
     $('#dataTable_info').hide();
+    $('.dataTables_empty').html('Không có dữ liệu');
 })

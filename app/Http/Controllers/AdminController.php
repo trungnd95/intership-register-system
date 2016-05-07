@@ -56,7 +56,7 @@ class AdminController extends Controller
      */
     public function listNotify()
     {
-        $all_Notify = NotificationAdmin::all();
+        $all_Notify = NotificationAdmin::orderBy('id','DESC')->get();
         return view('templates.admins.notifications.list',compact('all_Notify'));
     }
 

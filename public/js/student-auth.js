@@ -47,6 +47,11 @@ $(document).ready(function(){
 	  			var email 		= $(submit).parent().parent().find("input[name='email']").val();
 	  			var password 	= $(submit).parent().parent().find("input[name='password']").val();
 
+	  			$(submit).parent().parent().find("input[name='username']").val('');
+	  			$(submit).parent().parent().find("input[name='email']").val('');
+	  			$(submit).parent().parent().find("input[name='password']").val('');
+	  			$(submit).parent().parent().find("input[name='repassword']").val('');
+
 	  			$.ajax({
 	  				url: url,
 	  				type:"POST",
@@ -60,7 +65,7 @@ $(document).ready(function(){
 	  							swal("Đăng kí thành công", "Bạn vui lòng kiểm tra email để xác nhận", "success");
 	  							// alert('ok');
 	  						}else {
-	  							sweetAlert("Xảy ra lỗi khi đăng kí", result,'error');
+	  							sweetAlert("Không thành công", result,'error');
 	  						}
 	  				},
 	  				error: function(err){

@@ -1,5 +1,10 @@
 @extends('templates.layouts.master')
 @section('head.title', 'Ý kiến phản hồi')
+@if(Auth::guard('teachers')->getUser() == null)
+@section('breadcrumbs',Breadcrumbs::render('feedback'))
+@else
+@section('breadcrumbs_teacher',Breadcrumbs::render('feedback_teacher'))
+@endif
 @section('templates.body.content')
 <form role="form" method="POST" action ="{{(Auth::guard('teachers')->getUser() == null) ? route('student.feedback.saveForm') : route('teacher.feedback.saveForm')}}" class="form-inline col-md-10 go-right" id="form-update" style="color: Green;background-color:#FAFAFF;border-radius:0px 22px 22px 22px;">
 	<h2>Ý kiến phản hồi</h2><br/><br/>

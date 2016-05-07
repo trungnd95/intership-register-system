@@ -1,7 +1,10 @@
 @extends('auth.layouts.master')
 @section('head.title','Sinh Viên Đăng nhập')
 @section('body.content')
-<div class="login-box-body">
+<div class="login-box-body" style="/*margin-left: -20px;*/
+    -webkit-box-shadow: -7px 15px 18px -4px rgba(0,0,0,0.62);
+    -moz-box-shadow: -7px 15px 18px -4px rgba(0,0,0,0.62);
+    box-shadow: -7px 15px 18px -4px rgba(0,0,0,0.62) !important;">
     <p class="login-box-msg">Sinh Viên Đăng Nhập</p>
     @if(session('information_err'))
     <div class="alert alert-danger">

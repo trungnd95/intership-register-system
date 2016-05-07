@@ -19,7 +19,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::auth();
     Route::get('/register/verify/{confirmation_code}',[
     	'as' 	=> 'confirmation_path',
-   		'uses'	=> '\App\AuthController@confirm'
+   		'uses'	=> 'Auth\AuthController@confirm'
     ]);
     // End section 
     
@@ -119,10 +119,22 @@ Route::group(['middleware' => 'web'], function () {
          * CV create, update , view
          */
         Route::get('/{id}/cv',[
+            'as'    => 'student.cv.init',
+            'uses'  => 'CvController@init'
+        ]);
+        Route::get('/{id}/cv/xem',[
             'as'    => 'student.cv.view',
             'uses'  => 'CvController@view'
         ]);
-        Route::get('/{id}/cv/edit',[
+        Route::get('/{id}/cv/tao',[
+            'as'    => 'student.cv.create',
+            'uses'  => 'CvController@create'
+        ]);
+        Route::post('/{id}/cv/tao',[
+            'as'    => 'student.cv.store',
+            'uses'  => 'CvController@store'
+        ]);
+        Route::get('/{id}/cv/sua',[
             'as'    => 'student.cv.edit',
             'uses'  => 'CvController@edit'
         ]);
@@ -224,6 +236,9 @@ Route::group(['middleware' => 'web'], function () {
             'uses' =>  'FeedbackController@saveForm'
         ]);
 
+        /**
+         * List all teacher with information
+         */
         Route::get('/danh-sach-giang-vien',[
             'as'    => 'student.teacherList',
             'uses'  => 'TeacherController@teacherList'

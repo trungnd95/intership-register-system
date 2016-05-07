@@ -1,12 +1,11 @@
 @extends('templates.layouts.master')
-@section('head.title','Cập nhật Cv')
-@section('breadcrumbs',Breadcrumbs::render('update-cv'))
+@section('head.title','Tạo Cv')
+@section('breadcrumbs',Breadcrumbs::render('create-cv'))
 @section('templates.body.content')
-<form role="form" method="POST" action ="{{route('student.cv.update',[$id])}}" enctype="multipart/form-data" class="form-inline col-md-10 go-right" id="form-update" style="color: Green;background-color:#FAFAFF;border-radius:0px 22px 22px 22px;">
+<form role="form" method="POST" action ="{{route('student.cv.store',[$id])}}" enctype="multipart/form-data" class="form-inline col-md-10 go-right" id="form-update" style="color: Green;background-color:#FAFAFF;border-radius:0px 22px 22px 22px;">
 	<h2>Hồ sơ xin thực tập</h2>
-	<p>Bạn hãy cập nhật CV của mình</p>
+	<p>Bạn hãy tạo CV của mình</p>
 	{{ csrf_field() }}
-	<a href="{{route('student.cv.view',[$id])}}" class="btn btn-success pull-right view-cv">Xem Cv</a>
 	<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">            
 		<input id="name" name="name" type="text" class="form-control" value="{{old('name',isset($cv) ? $cv->name : null)}}" required>
 		<label for="name">Tên</label>
@@ -14,7 +13,7 @@
             <span class="help-block">
                 <strong>{{ $errors->first('name') }}</strong>
             </span>
-            @endif
+        @endif
 	</div>
 	<br/>
 	<br/>

@@ -1,5 +1,6 @@
 @extends('templates.layouts.master')
 @section('head.title','Thông tin cá  nhân')
+@section('breadcrumbs_teacher',Breadcrumbs::render('profile_teacher'))
 @section('templates.body.sidebar')
 	@include('templates.partials.sidebar_teacher')
 @endsection

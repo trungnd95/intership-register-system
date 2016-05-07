@@ -158,6 +158,7 @@ return [
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         Kryptonit3\Pusher\PusherServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
 
     ],
 
@@ -206,6 +207,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
 
     ],
 

@@ -30,10 +30,11 @@ class ReportController extends Controller
  	 * @return 
  	 */
  	public function index($user_id)
- 	{
+ 	{	
+ 		$student = User::findOrFail($user_id);
  		$reports = Report::with('comments')->where('user_id','=',$user_id)->get();
  		// return $reports;
- 		return view('templates.students.reports.index',compact('reports'));
+ 		return view('templates.students.reports.index',compact('reports','student'));
  	}
 
  	/**
