@@ -67,7 +67,11 @@
 
 									</td>
 									<td>
-										{{$student->teacher->full_name}}
+										@if($student->teacher != null)
+											{{$student->teacher->full_name}}
+										@else 
+											Chưa chọn giảng viên
+										@endif
 									</td>
 									<td>
 										@if($student->teacher_acceptance == 'accepted')
