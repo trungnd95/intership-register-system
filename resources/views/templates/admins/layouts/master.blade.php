@@ -2,7 +2,7 @@
 <html>
   @include('partials.head')
   <body class="hold-transition skin-blue sidebar-mini">
-    <div class="wrapper">
+    <div class="wrapper" >
       <!-- Main Header -->
       @include('templates.admins.partials.header')
       <!-- Left side column. contains the logo and sidebar -->
@@ -22,7 +22,7 @@
             @yield('body.headTitle')
           </h1>
         </section>
-        <div class="data-content">
+        <div class="data-content" style="min-height: 450px">
           @yield('admin.body.content')
         </div>
         <div class="notify_admin">

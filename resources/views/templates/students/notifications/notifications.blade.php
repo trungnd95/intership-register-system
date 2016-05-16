@@ -6,9 +6,9 @@
 	<div class="row">
 		<div class="box">
 		<div class="box-header">
-			<h4 class="">
+			<h2 class="title-header">
 				Tất cả thông báo của <a href="#">{{Auth::user()->user_name}}</a><hr/> 
-			</h4>
+			</h2>
 		</div>
 		<!-- /.box-header -->
 		<form method="POST" action="" id="delete-noti-student">

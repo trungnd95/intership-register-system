@@ -177,6 +177,10 @@ Route::group(['middleware' => 'web'], function () {
             'uses'  => 'RegisController@search_ajax'
         ]);
         
+        Route::get('/{id}/dang-ki-thuc-tap/{company_id}',[
+            'as'    => 'student.regis.companyDetail',
+            'uses'  => 'RegisController@companyDetail' 
+        ]);
         /**
          * Weekly Report For Topic Process
          */
@@ -242,6 +246,24 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/danh-sach-giang-vien',[
             'as'    => 'student.teacherList',
             'uses'  => 'TeacherController@teacherList'
+        ]);
+
+        /**
+         * Change password 
+         */
+        Route::get('/{id}/doi-mat-khau',[
+            'as'    => 'student.changePassword.getView',
+            'uses'  => 'UserController@viewChangePassword'
+        ]);
+
+        Route::post('/{id}/doi-mat-khau',[
+            'as'    => 'student.changePassword.postData',
+            'uses'  => 'UserController@postChangePassword'
+        ]);
+
+        Route::post('/{id}/check-old-password',[
+            'as'    => 'student.changePassword.check',
+            'uses'  => 'UserController@checkOldPassword'
         ]);
     });
 
@@ -317,7 +339,22 @@ Route::group(['middleware' => 'web'], function () {
             
         });
         //End compnaies manange process
-        
+
+        /**
+         * Register Time Management
+         */
+        Route::group(['prefix'=>'configuration'],function(){
+            Route::get('/',[
+                'as'    => 'admin.configuration.index',
+                'uses'  => 'ConfigurationController@index'
+            ]) ;
+            Route::post('/save',[
+                'as'    => 'admin.configuration.save',
+                'uses'  => 'ConfigurationController@save'
+            ]);
+        });
+
+
         /**
          * Feedback management
          */
@@ -394,6 +431,11 @@ Route::group(['middleware' => 'web'], function () {
             Route::get('/',[
                 'as'    => 'admin.students.manageStudents',
                 'uses'  => 'UserController@manageStudents'
+            ]);
+
+            Route::post('/phan-cong-giang-vien',[
+                'as'    => 'admin.students.allocateTeacher',
+                'uses'  => 'UserController@allocateTeacher'
             ]);
         });
 
@@ -596,6 +638,23 @@ Route::group(['middleware' => 'web'], function () {
             'as'   => 'teacher.feedback.saveForm',
             'uses' =>  'FeedbackController@saveForm'
         ]);
+        /**
+         * Change password 
+         */
+        Route::get('/{id}/doi-mat-khau',[
+            'as'    => 'teacher.changePassword.getView',
+            'uses'  => 'TeacherController@viewChangePassword'
+        ]);
+
+        Route::post('/{id}/doi-mat-khau',[
+            'as'    => 'teacher.changePassword.postData',
+            'uses'  => 'TeacherController@postChangePassword'
+        ]);
+
+        Route::post('/{id}/check-old-password',[
+            'as'    => 'teacher.changePassword.check',
+            'uses'  => 'TeacherController@checkOldPassword'
+        ]);
     });
 
     
@@ -615,5 +674,9 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/', 'HomeController@index');
 
+    Route::get('/export/{id}',[
+        'as'    => 'export.pdf',
+        'uses'  => 'CvController@export'
+    ]);
    
 });

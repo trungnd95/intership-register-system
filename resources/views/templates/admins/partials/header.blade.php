@@ -4,7 +4,7 @@
     <!-- mini logo for sidebar mini 50x50 pixels -->
     <span class="logo-mini">FIT</span>
     <!-- logo for regular state and mobile devices -->
-    <img src="{{asset('/public/images/fit.png')}}" class="thumbnail circle"  alt="Logo Fit" />
+    <img src="{{asset('/images/fit.png')}}" class="thumbnail circle"  alt="Logo Fit" />
   </a>
 
   <!-- Header Navbar -->

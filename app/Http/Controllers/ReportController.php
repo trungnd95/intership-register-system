@@ -13,7 +13,7 @@ use Auth;
 use App\Comment;
 use App\User;
 use App\Teacher;
-
+use App\Cv;
 class ReportController extends Controller
 {
 	/**
@@ -92,13 +92,20 @@ class ReportController extends Controller
  				$teacher =  Teacher::find($guard_id);
  				$username = $teacher->username;
  				$role = 'teacher';
- 				$avatar_src =  asset('/public/upload/images/teachers/'.$teacher->avatar);
+ 				$avatar_src =  asset('/images/teachers/tutor_login_icon.png');
  			}
  			else {
  				$student = User::find($guard_id);
  				$username = $student->user_name;
  				$role = 'student';
- 				$avatar_src =  asset('/public/upload/images/students/'.$student->avatar);
+ 				$cv = Cv::where('user_id','=',$guard_id)->first();
+ 				if(count($cv) > 0 && $cv->image != '')
+ 				{
+ 					$avatar_src =  asset('/upload/images/students/'.$cv->image);	
+ 				}else {
+ 					$avatar_src =  asset('/images/Student-icon.png');	
+ 				}
+ 				
  			}
  			$comment = new Comment;
  			$comment->username = $username;

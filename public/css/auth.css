@@ -8,15 +8,19 @@ div.content {
 div.content .login-box-body {
 	/*height: 300px;*/
 	padding-top: 0px;
+	border-radius: 5px;
+	/*background: #f9f9f9*/
+	border: 2px solid #c5c5c5 !important;
+	margin-top: 5px;
 }
 
 div.content .login-box-body .login-box-msg {
-	font-weight: bold;
-	font-size: 25px;
+	/*font-weight: bold;*/
+	/*font-size: 25px;*/
 	background: #c9edff;
 	margin-bottom: 25px;
 	padding-top: 15px;
-	width: 113%;
+	width: 112.6%;
 	margin-left: -20px;
 }
 
@@ -24,7 +28,7 @@ div.content .login-box-body .login-box-msg {
  *	Modal 
  */
 #modal-register .modal-header {
-	background: #008bba;
+	background: #c9edff;
 }
 label.error {
 	color:red;
@@ -34,5 +38,52 @@ label.error {
 	margin-left: -25px;
 	margin-top: 10px;
 	display: inline-block;
+}
+
+.login-box-body input[type='text'] {
+	margin: 35px 0px;
+}
+
+.login-box-body input[type='text']:focus , .login-box-body input[type='password']:focus {
+	background: #fff;
+}
+ 
+.login-box-body span.remember {
+	display: inline-block;
+	margin-top: 4px;
+	margin-left: 8px;
+}
+
+.login-box-body button[type='submit'] {
+	margin-top:10px;
+}
+
+.login-box-body .button_submit {
+	margin-left: -13px;
+	padding-right: 5px;
+}
+
+.login-box-body a:hover {
+	text-decoration: underline;
+	opacity: .7;
+}
+
+#modal-register label {
+	margin-top: -6px;
+}
+
+.leftbar-auth .slide .related_system {
+	/*margin-top: 5px*/
+}
+
+
+.leftbar-auth .slide .related_system img {
+	width: 100px;
+	height: 50px;
+}
+
+.leftbar-auth .slide .related_system a:hover {
+	opacity: .7;
+	text-decoration: underline;
 }
 

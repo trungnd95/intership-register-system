@@ -6,7 +6,7 @@
 				<a title="Trang chủ khoa công nghệ thông tin " target="_blank" href="http://fit.uet.vnu.edu.vn">Khoa Công Nghệ Thông Tin - FitUET</a>
 				<br />
 				<ul class="list-icon">
-					<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+					<li><a href="https://www.facebook.com/UET.FIT/?fref=ts"><i class="fa fa-facebook"></i></a></li>
 					<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
 					<li><a href="#"><i class="fa fa-twitter"></i></a></li>
 				</ul>
@@ -15,7 +15,7 @@
 			</div>
 			<div class="col-sm-4 buttons">
 				<a class="btn btn-link" target="_blank" href="http://uet.vnu.edu.vn">
-					<img src="{{ asset('public/images/uet.jpg')}}" alt="UET" />
+					<img src="{{ asset('/images/uet.jpg')}}" alt="UET" />
 					<span class="uet-home">Trang chủ UET</span>
 				</a>
 				<!-- <a class="btn btn-link" target="_blank" href="http://cait.vnu.edu.vn">Trang chủ CAIT</a> -->

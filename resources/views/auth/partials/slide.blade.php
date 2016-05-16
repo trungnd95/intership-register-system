@@ -1,44 +1,63 @@
-<div style="/*margin-left: -20px;*/
-	-webkit-box-shadow: -7px 15px 18px -4px rgba(0,0,0,0.62);
-	-moz-box-shadow: -7px 15px 18px -4px rgba(0,0,0,0.62);
-	box-shadow: -7px 15px 18px -4px rgba(0,0,0,0.62) !important;">
-	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-		<!-- Indicators -->
-		<ol class="carousel-indicators">
-			<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-			@for($i= 1; $i < count(App\Slide::all()) ; $i ++)
-				<li data-target="#carousel-example-generic" data-slide-to="{{$i}}" ></li>
-			@endfor
-		</ol>
-
-		<!-- Wrapper for slides -->
-		<div class="carousel-inner" role="listbox">
-			<?php $slides =  App\Slide::all() ?>
-			<div class="item active">
-				<img src="{{ asset($slides[0]->image)}}" alt="" style="width:700px;height:350px;overflow: hidden">
-				<div class="carousel-caption">
-					<a href="http://{{$slides[0]->description}}" target="_blank">{{$slides[0]->description}}</a>
-				</div>
+<div class="box leftbar-auth box-auth">
+	<div class="box-header">
+		<h3>Một Số Hệ Thống Liên Quan</h3>
+		<hr/>
+	</div>
+	<div class="box-body slide">
+		<div class="related_system" style="margin-top:-10px">
+			<div class="pull-left media-left img-hover" >
+				<img src="{{asset('/images/vnu.png')}}" class="img-responsive thumbnail" alt="Image" >
 			</div>
-			<?php unset($slides[0]);?>
-			@foreach($slides as $slide)
-				<div class="item ">
-					<img src="{{ asset($slide->image)}}" alt="" style="width:700px;height:350px; overflow: hidden" >
-					<div class="carousel-caption">
-						<a href="http://{{$slide->description}}" target="_blank">{{$slide->description}}</a>
-					</div>
-				</div>
-			@endforeach
+			<div class="media-right right">
+				{{-- <h4 class="title">  --}}
+					<a href="http://vnu.edu.vn"  target="_blank">Trang chủ Đại học Quốc gia Hà Nội</a>
+				{{-- </h4> --}}
+			</div>
 		</div>
-
-		<!-- Controls -->
-		<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-		</a>
-		<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		</a>
+		<div class="clearfix"></div>
+		<div class="related_system" >
+			<div class="pull-left media-left img-hover" >
+				<img src="{{asset('/images/uet.png')}}" class="img-responsive thumbnail" alt="Image" >
+			</div>
+			<div class="media-right right">
+				{{-- <h4 class="title">  --}}
+					<a href="http://uet.vnu.edu.vn"  target="_blank">Web site Trường Đại học Công nghệ</a>
+				{{-- </h4> --}}
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<div class="related_system">
+			<div class="pull-left media-left img-hover">
+				<img src="{{asset('/images/uetmail.png')}}" class="img-responsive thumbnail" alt="Image" >
+			</div>
+			<div class="media-right right">
+				{{-- <h4 class="title">  --}}
+					<a href="http://uetmail.vnu.edu.vn" target="_blank">Hệ thống thư điện tử Uetmail</a>
+				{{-- </h4> --}}
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<div class="related_system">
+			<div class="pull-left media-left img-hover">
+				<img src="{{asset('/images/dao-tao.png')}}" class="img-responsive thumbnail" alt="Image" >
+			</div>
+			<div class="media-right right">
+				{{-- <h4 class="title">  --}}
+					<a href="http://daotao.vnu.edu.vn" target="_blank">Cổng thông tin đào tạo UET</a>
+				{{-- </h4> --}}
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<div class="related_system">
+			<div class="pull-left media-left img-hover">
+				<img src="{{asset('/images/dao-tao.png')}}" class="img-responsive thumbnail" alt="Image" >
+			</div>
+			<div class="media-right right">
+				{{-- <h4 class="title">  --}}
+					<a href="http://student.uet.vnu.edu.vn" target="_blank">Hệ thống hỗ trợ sinh viên - UET</a>
+				{{-- </h4> --}}
+			</div>
+		</div>
+		<div class="clearfix"></div>
 	</div>
 </div>

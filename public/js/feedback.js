@@ -6,7 +6,7 @@ $(document).ready(function(){
 		var _token =  $('#admin-feedback').find("input[name='_token']").val();
 		
 		$.ajax({
-			url : '/admin/feed-back/' + id + '/edit',
+			url : baseURL + '/admin/feed-back/' + id + '/edit',
 			dataType:'JSON',
 			type: 'POST',
 			cache: false ,
@@ -21,7 +21,7 @@ $(document).ready(function(){
 		var _token =  $('#admin-feedback').find("input[name='_token']").val();
 		var id = $(this).data('id');
 		$.ajax({
-			url : '/admin/feed-back/' + id +'/delete',
+			url : baseURL + '/admin/feed-back/' + id +'/delete',
 			dataType:'JSON',
 			method: 'POST',
 			cache:false,

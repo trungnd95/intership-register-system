@@ -3,12 +3,14 @@
 @section('breadcrumbs',Breadcrumbs::render('status'))
 @section('templates.body.content')
 <div class="status">
-	<div class="box">
+	@if(count($status) > 0)
+	<div class="box status_exist">
 		<div class="box-header">
-			<h3 class="box-title">
+			<h2 class="title-header">
 				Tình trạng đăng kí của bạn<br/>
 				<small>(Bạn hãy chọn chỉ 1 công ty muốn thực tập trong các công ty được chấp nhận)</small>
-			</h3>
+				<hr/>
+			</h2>
 		</div>
 		<!-- /.box-header -->
 		<form method="POST" action="{{route('student.status.confirm_choosen_company',[Auth::user()->id])}}" id="form_choosen">
@@ -17,7 +19,7 @@
 			<div class="box-body">
 				<div class="row">
 					<div class="col-lg-12" id="search_display">
-						<table id="dataTable" class="table table-bordered table-striped">
+						<table id="dataTable" class="table table-bordered table-striped student-status-index">
 							<thead>
 								<tr class="text-center">
 									<th width="60px" class="text-center">Chọn</th>
@@ -81,7 +83,7 @@
 					</div>
 				</div> --}}
 			</div>
-			<div class="box-footer">
+			<div class="box-footer register_footer">
 				<div class="registered">
 					<button class="btn btn-primary confirm_button" >Xác nhận</button>
 				</div>
@@ -181,5 +183,14 @@
 			</div><!-- /.modal-dialog -->
 		</div><!-- /.modal -->
 	</div>
+	@else 
+	<div class="box status_empty">
+		<div class="box">
+			<div class="box-header">
+				<h4> Bạn chưa đăng kí !!! </h4>
+			</div>
+		</div>
+	</div>
+	@endif
 </div>
 @endsection

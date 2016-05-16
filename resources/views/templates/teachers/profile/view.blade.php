@@ -10,9 +10,9 @@
 	<div class="row">
 		<div class="col-md-4">
 			@if($teacher->avatar != '')
-				<img src="{{asset('/public/upload/images/teachers/'.$teacher->avatar)}}" alt="" class="thumbnail" width="150px" height="150px" style="margin-left: 30px">
+				<img src="{{asset('/upload/images/teachers/'.$teacher->avatar)}}" alt="" class="thumbnail" width="150px" height="150px" style="margin-left: 30px">
 			@else 
-				<img src="{{asset('/public/images/default-user.png')}}" alt="" class="thumbnail" width="150px" height="150px" >
+				<img src="{{asset('/images/default-user.png')}}" alt="" class="thumbnail" width="150px" height="150px" >
 			@endif
 		</div>
 		<div class="col-md-8 ">

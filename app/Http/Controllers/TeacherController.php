@@ -181,4 +181,50 @@ class TeacherController extends Controller
         $teachers = Teacher::all();
         return view('templates.students.profile.teacherList',compact('teachers'));
     }
+
+    /**
+     * [viewChangePassword description]
+     * @return [type] [description]
+     */
+    public function viewChangePassword($id)
+    {
+        return view('templates.teachers.changePassword.view');
+    }
+
+    /**
+     * [postChangePassword description]
+     * @return [type] [description]
+     */
+    public function postChangePassword($id)
+    {
+        $teacher = Teacher::findOrFail($id);
+        $new_password = Request::get('new_password');
+        $teacher->password = Hash::make($new_password);
+        $teacher->save();
+        Alert::success('Đã đổi mật khẩu')->persistent('Đóng');
+        return redirect()->route('teacher.index');
+    }
+
+    /**
+     * [checkOldPassword description]
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
+    public function checkOldPassword($id)
+    {
+        if(Request::ajax())
+        {
+            $id = Request::get('id');
+            // dd(Request::get('val'));
+            $val = Request::get('val');
+            $teacher = Teacher::findOrFail($id);
+            
+            if(Hash::check($val, $teacher->password))
+            {
+                return response()->json('ok');
+            }else {
+                return response()->json('Mật khẩu cũ không đúng');
+            }
+        }
+    }
 }

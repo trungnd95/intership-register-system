@@ -12,6 +12,9 @@ use Request;
 use App\User;
 use File;
 use Alert;
+use View;
+use App;
+use PDF;
 
 class CvController extends Controller
 {
@@ -60,7 +63,11 @@ class CvController extends Controller
     {
         $validator = Validator::make(Request::all(),[
             'name'              => 'required|min:6',
-            'email'             => 'required|email',
+            'student_code'      => 'required|unique:cvs',
+            'class'             => 'required',
+            'phone_number'      => 'required|unique:cvs',
+            'email'             => 'required|email|unique:cvs',
+            'email1'            => 'email|unique:cvs',
             'address'           => 'required',
             'short_selfintro'   => 'required',
             'education'         => 'required',
@@ -69,10 +76,17 @@ class CvController extends Controller
             'hobbies'           => 'required',
 
         ],[
-           'name.required'      => 'Bạn chưa nhập tên của mình',
-           'name.min'           => 'Tên quá ngắn',    
-            'email.required'    => 'Bạn chưa nhập email',
+            'name.required'      => 'Bạn chưa nhập tên của mình',
+            'student_code.required'=> 'Bạn chưa nhập mã sinh viên của mình',
+            'student_code.unique'=> 'Mã sinh viên là duy nhất. Bạn có đang dùng msv của ai đó ko???',
+            'name.min'           => 'Tên quá ngắn',
+            'class.required'     => 'Bạn chưa nhập tên khóa học của mình','email.required'    => 'Bạn chưa nhập email',
+            'phone_number.required'=> 'Bạn chưa nhập số điện thoại của mình',
+            'phone_number.unique'  => 'Bạn không được sử dụng số điện thoại của người khác',    
             'email.email'       => 'Email không đúng định dạng',
+            'email.unique'      => 'Bạn không được sử dụng email của người khác',
+            'email1.email'       => 'Email không đúng định dạng',
+            'email1.unique'      => 'Bạn không được sử dụng email của người khác',
             'address.required'  => 'Bạn chưa nhập quê quán',
             'short_selfintro.required'   => 'Hãy giới thiệu 1 vài điều ngắn gọn về bản thân',
             'education.required'=> 'Hãy tóm tắt ngắn gọn quá trình học tập. Bắt buộc',
@@ -80,11 +94,13 @@ class CvController extends Controller
             'technical.required'=> 'Nêu các công nghệ mà bạn  đã sử dụng',
             'hobbies.required'  => 'Tóm tắt ngắn gọn về sở thích của cá nhân. Những lúc rảnh rỗi', 
         ]);
+
         if($validator->fails())
         {   
             Alert::error("Xảy ra lỗi khi tạo hồ sơ. Xem thông báo lỗi và sửa lại")->persistent("Close");
             return back()->withInput()->withErrors($validator);
         }
+
         $cv = new Cv;
         if(Request::file('image'))
         {
@@ -94,8 +110,14 @@ class CvController extends Controller
             $cv->image = $image;
         }
         $cv->name = Request::get('name');
-        
+        $cv->student_code = Request::get('student_code');
+        $cv->class = Request::get('class');
+        $cv->phone_number = Request::get('phone_number');
         $cv->email  = Request::get('email');
+        if(Request::get('email1') != '')
+        {
+            $cv->email1= Request::get('email1');
+        }
         $cv->address= Request::get('address');
         $cv->personal_website = Request::get('personal_website');
         $cv->short_selfintro = Request::get('short_selfintro');
@@ -130,7 +152,11 @@ class CvController extends Controller
     {
         $validator = Validator::make(Request::all(),[
             'name'              => 'required|min:6',
+            'student_code'      => 'required',
+            'class'             => 'required',
+            'phone_number'      => 'required',
             'email'             => 'required|email',
+            'email1'            => 'email',
             'address'           => 'required',
             'short_selfintro'   => 'required',
             'education'         => 'required',
@@ -140,9 +166,13 @@ class CvController extends Controller
 
         ],[
            'name.required'      => 'Bạn chưa nhập tên của mình',
-           'name.min'           => 'Tên quá ngắn',    
+           'name.min'           => 'Tên quá ngắn',
+           'student_code.required'  => 'Mã sinh viên không được để trống',
+           'class.required'     => 'Lớp khóa học không được để trống',
+           'phone_number.required'  => 'Số điện thoại là bắt buộc',           
             'email.required'    => 'Bạn chưa nhập email',
             'email.email'       => 'Email không đúng định dạng',
+            'email1'            => 'Email chưa đúng định dạng',
             'address.required'  => 'Bạn chưa nhập quê quán',
             'short_selfintro.required'   => 'Hãy giới thiệu 1 vài điều ngắn gọn về bản thân',
             'education.required'=> 'Hãy tóm tắt ngắn gọn quá trình học tập. Bắt buộc',
@@ -152,6 +182,7 @@ class CvController extends Controller
         ]);
         if($validator->fails())
         {   
+
             Alert::error("Xảy ra lỗi khi cập nhật. Xem thông báo lỗi và sửa lại")->persistent("Close");
             return back()->withInput()->withErrors($validator);
         }
@@ -172,7 +203,14 @@ class CvController extends Controller
         }
         $cv->name = Request::get('name');
         $cv->image = $image;
+        $cv->student_code = Request::get('student_code');
+        $cv->class = Request::get('class');
+        $cv->phone_number = Request::get('phone_number');
         $cv->email  = Request::get('email');
+        if(Request::get('email1'))
+        {
+            $cv->email1 = Request::get('email1');
+        }
         $cv->address= Request::get('address');
         $cv->personal_website = Request::get('personal_website');
         $cv->short_selfintro = Request::get('short_selfintro');
@@ -187,4 +225,13 @@ class CvController extends Controller
         Alert::success('Cập nhật thành công')->persistent("Close");
         return back();
     }
+
+    public function export($id)
+    {
+        $cv = User::find($id)->load('cv');
+//        $view = view('templates.students.cv.view',['cv'=>$cv])->render();
+
+        $pdf = PDF::loadView('templates.students.cv.view', ['cv'=>$cv]);
+        return $pdf->download('invoice.pdf');
+    }   
 }

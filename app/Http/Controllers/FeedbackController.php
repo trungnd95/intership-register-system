@@ -47,7 +47,7 @@ class FeedbackController extends Controller
     	$data = ['email'=> $email,'content'=> $content];
     	Mail::send('templates.feedbacks.email',$data,function($message) use ($data) {
     		$message->from($data['email'],'Guest Feedback');
-    		$message->to('admin.internship@gmail.com','Admin')->subject('Feedback');
+    		$message->to('ndt8895@gmail.com','Admin')->subject('Feedback');
     	});
 
     	Alert::success("Phản hồi của bạn đã được hệ thống lưu lại. Cám ơn bạn đã đóng góp để hệ thống hoàn thiện hơn !","Đã gửi")->persistent('Đóng');

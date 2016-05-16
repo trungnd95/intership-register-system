@@ -41,7 +41,7 @@ $(document).ready(function(){
 	  		submitHandler:function(submit){
 	  			$('#modal-register').modal('hide').delay('500');
 	  			$('.loading').removeClass('hidden');
-	  			var url 		= "http://internship.dev/register";
+	  			var url 		= baseURL + "/register";
 	  			var _token 		= $(submit).parent().parent().find("input[name='_token']").val();
 	  			var username 	= $(submit).parent().parent().find("input[name='username']").val();
 	  			var email 		= $(submit).parent().parent().find("input[name='email']").val();
@@ -91,6 +91,57 @@ $(document).ready(function(){
 					    //     });					    }
 	  				}
 	  			});
+	  		}
+	  		
+	  });
+
+
+	//Change password for student
+	$("#old_password").keyup(function(){
+		var val = $(this).val();
+		var id = $(this).data('id');
+		var _token = $("#form-change-password").find("input[name='_token']").val();
+		$.ajax({
+			url: baseURL + '/sinh-vien/' + id + '/check-old-password',
+			dataType: 'JSON',
+			cache:false,
+			type:'POST',
+			data: {'_token':_token, 'val':val,'id':id},
+			success: function(result)
+			{
+				if(result != 'ok')
+				{
+					$('.error_old_password').removeClass('hidden');
+				}
+				else {
+					$('.error_old_password').addClass('hidden');
+				}
+			}
+		});
+	});
+
+	$('#form-change-password').validate({
+	  		rules:{
+	  			new_password:{
+	  				required:true,
+	  				minlength:6
+	  				// maxlength:32
+	  			},
+	  			re_new_password:{
+	  				required:true,
+	  				equalTo: "#new_password"
+	  			}
+	  		},
+	  		messages: {
+	  			new_password:{
+	  				required: "Bạn chưa nhập mật khẩu mới",
+	  				minlength: "Mật khẩu quá ngắn,tối thiểu 6 kí tự"
+	  				// maxlength: "Tên đăng nhập quá dài, tối đa là 32 kí tự"
+	  			},
+	  			re_new_password:{
+	  				required: "Bạn cần xác nhận lại mật khẩu",
+	  				equalTo : "Mật khẩu không giống với mật khẩu bên trên"
+	  			}
 	  		}
 	  		
 	  });

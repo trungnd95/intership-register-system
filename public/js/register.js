@@ -47,7 +47,7 @@ $(document).ready(function(){
         delay(function(){
             var _token = $("#form_list_company").find("input[name='_token']").val();
             var key_search  = $("#search_company").val();
-            var url =  "/sinh-vien/dang-ki-thuc-tap/search-result"  ;
+            var url =  baseURL + "/sinh-vien/dang-ki-thuc-tap/search-result"  ;
             $.ajax({
                 url : url,
                 type: "GET",
@@ -116,6 +116,15 @@ $(document).ready(function(){
       $('.dataTables_empty').hide();
     });
 
-
-
+  // Click reset checked register
+  $('.reset_register_button').on('click',function(){
+      $('.student-register-index').find('tbody').find("input[type='checkbox']").each(function(){
+          if($(this)[0].checked == true )
+          {
+              $(this)[0].checked = false; 
+          }
+      });
+      return false;
+      
+  });
 });

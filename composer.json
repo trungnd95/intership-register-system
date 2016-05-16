@@ -11,7 +11,8 @@
         "kryptonit3/pusher": "dev-master",
         "barryvdh/laravel-dompdf": "0.6.*",
         "davejamesmiller/laravel-breadcrumbs": "^3.0",
-        "chencha/share": "^5.2"
+        "chencha/share": "^5.2",
+        "barryvdh/laravel-snappy": "^0.3.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

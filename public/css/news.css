@@ -4,13 +4,14 @@
  */
 
 .news,.verify,.topic {
-	background-color: #fafaff;
+	/*background-color: #fafaff;*/
 	border-radius: 0 20px;
 	color: Green;
-	border: 4px groove #f4f4ff;
-    box-shadow: -1px -1px 3px gray inset, 1px 1px 1px #444;
+
+	/*border: 4px groove #f4f4ff;*/
+    /*box-shadow: -1px -1px 3px gray inset, 1px 1px 1px #444;*/
     padding: 10px 20px;
-    padding-left: 50px;
+    padding-left: 50px !important;
 }
 
 .news div.share ul.list {

@@ -21,7 +21,7 @@ class StatusController extends Controller
 	 */
     public function index()
     {
-        $students = User::with(['statuses','teacher','statuses.company'])->get();
+        $students = User::with(['statuses','teacher','statuses.company','cv'])->where('confirmed','=',1)->get();
         return view('templates.admins.status.index',compact('students'));
     }
 
@@ -41,17 +41,17 @@ class StatusController extends Controller
                 $old_status->save();
                 $company = Company::findOrFail($old_status->company_id);
                 
-                $notifyStudent = new StudentNotification;
-                $notifyStudent->user_id = $old_status->user_id;
-                if($old_status->acceptance == 'success')
-                {
-                    $notifyStudent->message = 'Công ty '.$company->name.' đã chấp nhận bạn vào thực tập tại công ty';
-                }else {
-                    $notifyStudent->message = 'Công ty '.$company->name.' không chấp nhận bạn vào thực tập tại công ty';
-                }
-                $notifyStudent->seen = 0;
-                $notifyStudent->save();
-                event(new NotifyStudent($notifyStudent));
+                // $notifyStudent = new StudentNotification;
+                // $notifyStudent->user_id = $old_status->user_id;
+                // if($old_status->acceptance == 'success')
+                // {
+                //     $notifyStudent->message = 'Công ty '.$company->name.' đã chấp nhận bạn vào thực tập tại công ty';
+                // }else {
+                //     $notifyStudent->message = 'Công ty '.$company->name.' không chấp nhận bạn vào thực tập tại công ty';
+                // }
+                // $notifyStudent->seen = 0;
+                // $notifyStudent->save();
+                // event(new NotifyStudent($notifyStudent));
                 return response()->json([$status_id,$status]);
             }
             if(Request::get('contact') != '')

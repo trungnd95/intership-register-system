@@ -4,7 +4,7 @@
 @section('templates.body.content')
 	<div class="box">
 		<div class="box-header">
-			<h3>Tạo hồ sơ xin thực tập</h3><br/><hr/>
+			<h2 class="title-header">Tạo hồ sơ xin thực tập</h2><br/><hr/>
 		</div>
 		<div class="box-body">
 			<p>Bạn chưa tạo CV.Click nút bên dưới để tạo CV</p>

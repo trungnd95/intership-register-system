@@ -12,7 +12,7 @@ class Cv extends Model
      * @var array
      */
     protected $fillable = [
-        'id','name','image','email','address','personal_website','short_selfintro','education',
+        'id','name','image','student_code','class','phone_number','email','email1','address','personal_website','short_selfintro','education',
         'skills','technical','experiences','hobbies','others','user_id'
     ];
 

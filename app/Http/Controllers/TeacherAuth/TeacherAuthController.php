@@ -34,17 +34,18 @@ class TeacherAuthController extends Controller {
     {
     	if(Request::ajax())
         {
-            $validator =  Validator::make(Request::all(),[
-                        'email' => 'unique:teachers'
-                    ],[
-                        'email.unique'  => 'Email này đã có người đăng kí'
-                    ]);
-            if($validator->fails())
-            {   
-                return response()->json($validator->messages(),200);
-            }
+            // $validator =  Validator::make(Request::all(),[
+            //             'email' => 'unique:teachers'
+            //         ],[
+            //             'email.unique'  => 'Email này đã có người đăng kí'
+            //         ]);
+            // if($validator->fails())
+            // {   
+            //     return response()->json($validator->messages(),200);
+            // }
             $token      = Request::get('_token'); 
-            $username   = Request::get('username');
+            $username   = Request::get('email');
+            $full_name =  Request::get('full_name');
             $email      = Request::get('email');
             $email      .= '@vnu.edu.vn'; 
             $password   = Request::get('password');
@@ -57,7 +58,8 @@ class TeacherAuthController extends Controller {
 
 
             Teacher::create([
-                'username'     => $username,
+                'username'      => $username,
+                'full_name'     => $full_name,
                 'email'         => $email,
                 'password'      => Hash::make($password),
                 'confirmed'     => 0,
@@ -114,10 +116,10 @@ class TeacherAuthController extends Controller {
     public function postLogin()
     {
     	$validator = Validator::make(Request::all(),[
-    		'username' => 'required',
+    		'email' => 'required',
     		'password' => 'required'
     	],[
-    		'username.required' => 'Tên đăng nhập không được trống',
+    		'username.required' => 'Tên email không được trống',
     		'password.required' => 'Chưa nhập mật khẩu'
     	]);
     	//If information is not validated
@@ -128,7 +130,7 @@ class TeacherAuthController extends Controller {
 
     	//Else
     	$credentials =  [
-    		'username' => Request::get('username'),
+    		'email' => Request::get('email').'@vnu.edu.vn',
     		'password' => Request::get('password'),
     		'confirmed'=> 1
     	];

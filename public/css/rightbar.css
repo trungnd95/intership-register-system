@@ -16,15 +16,21 @@
 
 .right-bar #leftcolumn {
 	/*margin-left: -20px;*/
-	-webkit-box-shadow: -7px 15px 18px -4px rgba(0,0,0,0.62);
-	-moz-box-shadow: -7px 15px 18px -4px rgba(0,0,0,0.62);
-	box-shadow: -7px 15px 18px -4px rgba(0,0,0,0.62) !important;
+	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+
+}
+
+#mycalendar {
+	border:none;
 }
 
 .right-bar #yui_3_18_1_1_1462507444776_12 , .content-frontend {
-	-webkit-box-shadow: -7px 15px 18px -4px rgba(0,0,0,0.62);
-	-moz-box-shadow: -7px 15px 18px -4px rgba(0,0,0,0.62);
-	box-shadow: -7px 15px 18px -4px rgba(0,0,0,0.62) !important;
+	/*border:1px  solid #ecf0f1 !important;*/
+	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+box-shadow: 0 1px 1px rgba(0,0,0,0.1);
 }
 
 /*.slide-rightbar {
@@ -51,9 +57,10 @@
 	background: #fff;
 	opacity: .9;
 	height: 300px !important;
-	-webkit-box-shadow: -7px 15px 18px -4px rgba(0,0,0,0.62);
-	-moz-box-shadow: -7px 15px 18px -4px rgba(0,0,0,0.62);
-	box-shadow: -7px 15px 18px -4px rgba(0,0,0,0.62) !important;
+	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+border:1px solid #bdc3c7;
 }
 .second-right h3 {
 	text-align: center;

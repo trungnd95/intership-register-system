@@ -1,14 +1,14 @@
 @extends('templates.layouts.master')
 @section('head.title', 'Cập nhật thông tin cá nhân')
-@section('breadcrumbs',Breadcrumbs::render('profile'));
+@section('breadcrumbs',Breadcrumbs::render('profile'))
 @section('templates.body.content')
 <div class="profile-info">
 	<div class="row">
 		<div class="col-md-4">
 			@if($user->avatar != '')
-				<img src="{{asset('/public/upload/images/students/'.$user->avatar)}}" alt="" class="thumbnail" width="150px" height="150px" style="margin-left: 30px">
+				<img src="{{asset('/upload/images/students/'.$user->avatar)}}" alt="" class="thumbnail" width="150px" height="150px" style="margin-left: 30px">
 			@else 
-				<img src="{{asset('/public/images/default-user.png')}}" alt="" class="thumbnail" width="150px" height="150px" >
+				<img src="{{asset('/images/default-user.png')}}" alt="" class="thumbnail" width="150px" height="150px" >
 			@endif
 		</div>
 		<div class="col-md-8 ">
@@ -38,14 +38,8 @@
 						<th>Giảng viên hướng dẫn :  </th>
 						<?php $teacher =  App\Teacher::select('*')->where('id','=',$user->teacher_id)->first()?>
 						<td>
-							{{(count($teacher) > 0) ? $teacher->full_name : 'Chưa chọn giảng viên'}}
-							@if($user->teacher_acceptance == 'pending')
-								<span class="text-warning">  (Đang chờ)</span>
-							@elseif($user->teacher_acceptance == 'accepted')
-								<span class="text-success">  (Được chấp nhận)</span>
-							@elseif($user->teacher_acceptance == 'ignore')
-								<span class="text-danger">(Không chấp nhận)</span>
-							@endif
+							{{(count($teacher) > 0) ? $teacher->full_name : 'Chưa được phân công'}}
+							
 						</td>
 					</tr>	
 					<tr>

@@ -41,4 +41,52 @@ $(document).ready(function(){
     $('#dataTable_length').find('label').html(html);
     $('#dataTable_info').hide();
     $('.dataTables_empty').html('Không có dữ liệu');
+    
+
+    //Date time picker  
+     $('#datetimepicker1').datetimepicker({
+    format: 'DD/MM/YYYY HH:mm A'
+}).on('dp.change',function(e){
+     	var time_start = $(this).find('input').val();
+     	var _token = $('#form_set_date').find("input[name='_token']").val();
+     	$.ajax({
+     		url: baseURL + '/admin/time/save',
+     		dataType: 'JSON',
+     		cache:'false',
+     		type: 'POST',
+     		data: {'_token': _token, 'time_start': time_start},
+     		success:function(result)
+     		{
+
+     		}
+     	});
+     });
+     $('#datetimepicker2').datetimepicker({
+        format: 'DD/MM/YYYY HH:mm A'
+      }).on('dp.change',function(e){
+     	var time_end = $(this).find('input').val();
+     	var _token = $('#form_set_date').find("input[name='_token']").val();
+     	$.ajax({
+     		url: '/admin/time/save',
+     		dataType: 'JSON',
+     		cache:'false',
+     		type: 'POST',
+     		data: {'_token': _token, 'time_end': time_end},
+     		success:function(result)
+     		{
+
+     		}
+     	});
+     });
+
+     //active menu sidebar
+     var current = window.location.href;
+      console.log(current);
+      $('#menu-main-menu > li > a').each(function(){
+            if($(this).attr('href').indexOf(current) != -1 && $(this).attr('href').length == current.length){
+            $(this).addClass('active1');
+             $(this).parent().addClass('active1');
+            }
+            // console.log($(this).attr('href').indexOf(current));
+        });
 })

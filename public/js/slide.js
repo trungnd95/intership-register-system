@@ -7,7 +7,7 @@ $(document).ready(function(){
 	$('.confirm_del_slide').on('click',function(){
 		$("#modalSlideDelete").modal('hide').delay('500');
 		var slide_id = $(this).data('slide_id');
-		var url = "/admin/slide/" + slide_id + "/xoa";
+		var url = baseURL + "/admin/slide/" + slide_id + "/xoa";
 		var _token = $('#form-index-slide').find("input[name='_token']").val();
 		$.ajax({
 			url:url,

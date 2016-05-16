@@ -114,17 +114,17 @@ class AuthController extends Controller
                 return response()->json($validator->messages(),200);
             }
             $token      = Request::get('_token'); 
-            $username   = Request::get('username');
+            $username   = Request::get('email');
             $email      = Request::get('email');
             $email      .= '@vnu.edu.vn'; 
             $password   = Request::get('password');
             $confirmation_code = str_random(10);
 
-            $usernameExist =  User::select('email')->where('user_name','=',$username)->get();
-            if(count($usernameExist) != 0)
-            {
-               return response()->json('Tài khoản đã bị trùng'); 
-            }
+            // $usernameExist =  User::select('email')->where('user_name','=',$username)->get();
+            // if(count($usernameExist) != 0)
+            // {
+            //    return response()->json('Tài khoản đã bị trùng'); 
+            // }
 
             $user_exist =  User::select('email')->where('email','=',$email)->get();
             if(count($user_exist) != 0)
@@ -153,6 +153,7 @@ class AuthController extends Controller
             $data =  array('confirmation_code'=>$confirmation_code,'email'=>$email,'username'=>$username);
             Mail::send('auth.emails.verify', $data, function($message) use ($data)
             {
+                // $message->from('ndt8895@gmail.com','Admin Register Internship');
                 $message->to($data['email'],$data['username'])
                     ->subject('Xác nhận đăng kí hệ thống đăng kí thực tập');
             });
@@ -216,19 +217,20 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $validator = Validator::make(Request::all(),[
-            'email'     => 'required|email',
+            'email'     => 'required',
             'password'  => 'required',
         ],[
             'email.required'    => 'Bạn chưa nhập email',
-            'email.email'       => 'Email chưa đúng định dạng',
+            // 'email.email'       => 'Email chưa đúng định dạng',
             'password.required' => 'Bạn chưa nhập mật khẩu'
         ]);
         if($validator->fails())
         {
             return back()->withInput()->withErrors($validator);
         }
+        $email = Request::get('email').'@vnu.edu.vn';
         $credentials = [
-            'email'     => Request::get('email'),
+            'email'     => $email,
             'password'  => Request::get('password'),
             'confirmed' => 1,
         ];

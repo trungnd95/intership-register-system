@@ -90,7 +90,7 @@ $(document).ready(function(){
         var student_id = $(this).next().next().val();
         var _token =  $('#delete-noti-student').find("input[name='_token']").val();
         $.ajax({
-            url: '/sinh-vien/' + student_id + '/thong-bao/delete',
+            url: baseURL + '/sinh-vien/' + student_id + '/thong-bao/delete',
             dataType:'JSON',
             cache:false,
             type:'GET',

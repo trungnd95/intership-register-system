@@ -8,7 +8,7 @@ $(document).ready(function(){
 	$('.confirm_del').on('click',function(){
 		$("#delete-company").modal('hide').delay('500');
 		var company_id = $(this).data('company_id');
-		var url = "/admin/cong-ty/" + company_id + "/delete";
+		var url = baseURL + "/admin/cong-ty/" + company_id + "/delete";
 		var _token = $('#form-index-company').find("input[name='_token']").val();
 		$.ajax({
 			url:url,

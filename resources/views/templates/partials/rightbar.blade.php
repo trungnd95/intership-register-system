@@ -6,7 +6,7 @@
 	</div>
 	<div class="row" style="margin-top: 50px">
 		<div class="col-md-12">
-			@include('templates.partials.partners')
+			{{-- @include('templates.partials.partners') --}}
 		</div>
 	</div>
 	

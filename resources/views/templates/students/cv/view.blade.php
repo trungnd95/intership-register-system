@@ -6,23 +6,30 @@
 <div id="cv" class="instaFade">
 	<div class="mainDetails">
 		<div id="headshot" class="quickFade">
-			<img src="{{asset('/public/upload/images/students/'.$cv->cv->image)}}" alt="Ảnh đại diện" />
+			<img src="{{asset('/upload/images/students/'.$cv->cv->image)}}" alt="Ảnh đại diện" />
 		</div>
 		
 		<div id="name">
-			<h1 class="quickFade delayTwo">{{ $cv->cv->name }}</h1>
+			<h1 class="quickFade delayTwo">{!! $cv->cv->name !!}</h1>
 		</div>
 		
 		<div id="contactDetails" class="quickFade delayFour">
 			<ul>
+				@if($cv->id ==  Auth::user()->id)
+					<li><a href="{{route('student.cv.edit',$cv->id)}}">Sửa</a></li>
+				@endif
+				<li><a href="{{route('export.pdf',[$cv->id])}}" target="_blank">Export PDF</a></li>
 				<li><a title="print cv" alt="print cv" onclick="window.print()" target="_blank" style="cursor:pointer;margin-left: 80%"><i class="fa fa-print fa-2x"></i>
 				</a></li>
-				<li>e: <a href="mailto:{{$cv->cv->email}}" target="_blank">{{$cv->cv->email}}</a></li>
-				@if($cv->cv->personal_website != null)
-				<li>w: <a href="{{$cv->cv->personal_website}}">{{$cv->cv->personal_website}}</a></li>
+				<li>e: <a href="mailto:{{$cv->cv->email}}" target="_blank">{!! $cv->cv->email !!}</a></li>
+				@if($cv->cv->email1 != null)
+					<li>e2: <a href="mailto:{{$cv->cv->email1}}" target="_blank">{!! $cv->cv->email1 !!}</a></li>
 				@endif
-				<li>m: {{ $cv->phone_number}}</li>
-				<li>Ad: {{$cv->cv->address}}</li>
+				@if($cv->cv->personal_website != null)
+				<li>w: <a href="{{$cv->cv->personal_website}}">{!! $cv->cv->personal_website !!}</a></li>
+				@endif
+				<li>m: {!! $cv->cv->phone_number !!}</li>
+				<li>Ad: {!! $cv->cv->address !!}</li>
 			</ul>
 		</div>
 		<div class="clear"></div>
@@ -36,20 +43,42 @@
 				</div>
 				
 				<div class="sectionContent">
-					<p>{!! $cv->cv->short_selfintro !!}</p>
+					<p>{!! nl2br($cv->cv->short_selfintro) !!}</p>
 				</div>
 			</article>
 			<div class="clear"></div>
 		</section>
-		
-		
+		<section>
+			<article>
+				<div class="sectionTitle">
+					<h1>Mã sinh viên</h1>
+				</div>
+				
+				<div class="sectionContent">
+					<p>{!! nl2br($cv->cv->student_code) !!}</p>
+				</div>
+			</article>
+			<div class="clear"></div>
+		</section>
+		<section>
+			<article>
+				<div class="sectionTitle">
+					<h1>Lớp khóa học</h1>
+				</div>
+				
+				<div class="sectionContent">
+					<p>{!! nl2br($cv->cv->class) !!}</p>
+				</div>
+			</article>
+			<div class="clear"></div>
+		</section>
 		<section>
 			<div class="sectionTitle">
 				<h1>Quá trình học tập</h1>
 			</div>
 			
 			<div class="sectionContent">
-				{!! $cv->cv->education !!}
+				{!! nl2br($cv->cv->education) !!}
 			</div>
 			<div class="clear"></div>
 		</section>
@@ -61,7 +90,7 @@
 			</div>
 			
 			<div class="sectionContent">
-				{!!  $cv->cv->skills !!}
+				{!!  nl2br($cv->cv->skills) !!}
 			</div>
 			<div class="clear"></div>
 		</section>
@@ -73,7 +102,7 @@
 			</div>
 			
 			<div class="sectionContent">
-				{!! $cv->cv->technical !!}
+				{!! nl2br($cv->cv->technical) !!}
 			</div>
 			<div class="clear"></div>
 		</section>
@@ -84,7 +113,7 @@
 				</div>
 				
 				<div class="sectionContent">
-					{!! $cv->cv->experiences !!}
+					{!! nl2br($cv->cv->experiences) !!}
 				</div>
 				<div class="clear"></div>
 			</section>
@@ -96,7 +125,7 @@
 			</div>
 			
 			<div class="sectionContent">
-				{!! $cv->cv->hobbies !!}
+				{!! nl2br($cv->cv->hobbies) !!}
 			</div>
 			<div class="clear"></div>
 		</section>
@@ -108,7 +137,7 @@
 				</div>
 				
 				<div class="sectionContent">
-					{!! $cv->cv->others !!}
+					{!! nl2br($cv->cv->others) !!}
 				</div>
 				<div class="clear"></div>
 			</section>

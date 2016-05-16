@@ -1,0 +1,35 @@
+
+ul#menu-main-menu {
+    margin-top: 25px;
+    width: 150px
+}
+
+ul#menu-main-menu li {
+	width: 100%;
+	border-left: 2px solid #5a94f4;
+	background: #f4f4f4;
+	border-radius: 5px;
+	margin-top: 5px;
+	width: 150%;
+}
+
+ul#menu-main-menu li:hover {
+    background: none;
+}
+
+ul#menu-main-menu li > a {
+    color: #9999a2;
+}
+
+ul#menu-main-menu li > a:hover {
+    background: none;
+    color: #5a94f4;
+    transition: color 0.5s ease-in-out;
+    border-left: 3px solid #5a94f4;
+}
+
+.active1 {
+    background: #bdc3c7 !important;
+ 	border-left: 3px solid #5a94f4 !important;   
+    color: #5a94f4 !important;
+}

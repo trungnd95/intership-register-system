@@ -6,7 +6,7 @@
 			@foreach($partners as $item)
 			<li class="patner">
 				<a href="{{$item->link}}">
-					<img src="{{$item->image}}" alt="" width="200px" height="300px">
+					<img src="{{asset('..'.$item->image)}}" alt="" width="200px" height="300px">
 				</a>
 			</li>
 			@endforeach

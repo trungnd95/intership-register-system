@@ -4,11 +4,11 @@
  */
 
 section.content-register ,.status {
-	background-color: #fafaff;
+	/*background-color: #fafaff;*/
 	border-radius: 0 20px;
 	padding:20px;
 	/*border: 4px groove #f4f4ff;*/
-    box-shadow: -1px -1px 3px gray inset, 1px 1px 1px #444;
+    /*box-shadow: -1px -1px 3px gray inset, 1px 1px 1px #444;*/
 }
 
 section.content-register div.search-regis {
@@ -16,22 +16,23 @@ section.content-register div.search-regis {
 }
 
 input[type='checkbox'] {
-	width: 16px;
-	height: 16px;
+	width: 20px;
+	height: 20px;
 }
 
 input[type=checkbox]:disabled {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   font-size: 27px;
   /*display: none;*/
-  background:url('/public/images/checkedbox.png');
+  background:url('/public/images/checked.jpg');
   position: relative;
 }
 
 input[type=checkbox]:disabled:after {
 	content: " ";
-    background: url('/public/images/checkedbox.png') no-repeat;
+    background: url('/public/images/checked.jpg') no-repeat -9px -10px;
+
     display: inline-block;
     visibility: visible;
     width: 16px;
@@ -39,4 +40,19 @@ input[type=checkbox]:disabled:after {
     position: absolute;
     top: 0px;
     /*border-radius: 50%;*/
+}
+
+.student-register-index  thead tr th:first-child:after ,
+.student-register-index  thead tr th:last-child:after  ,
+.student-status-index thead tr th:first-child:after{
+  content:'' !important;
+}
+
+.register_footer {
+  position: relative;
+}
+
+.register_footer .registered {
+  position: absolute;
+  top:-65px;
 }

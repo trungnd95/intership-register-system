@@ -33,16 +33,6 @@ $(document).ready(function(){
 		   	html +=  '<li class="notify-item">';
 		   	html += '<p>'+message+'</p>';
 		   	html += '<span>Vào lúc '+ data.notifyTeacher.created_at +'</span>';
-            html += '<div class="form-group teacher_acceptance">';
-            html += '<label class="col-md-4 control-label" >Tùy chọn</label>';
-            html += '<div class="col-md-4 ">'; 
-            html += '<label class="radio-inline " >';
-            html += '<input type="radio" name="teacher_choosen_'+ data.notifyTeacher.id+'"  value="accepted"  class="accepted" data-id="'+data.notifyTeacher.id+'" user-id="'+data.notifyTeacher.user_id+'">';
-            html += 'Chấp nhận</label> ';
-            html += '<label class="radio-inline" >';
-            html += '<input type="radio" name="teacher_choosen_'+data.notifyTeacher.id+'"  value="ignore" class="ignore"  data-id="'+data.notifyTeacher.id+'" user-id="'+data.notifyTeacher.user_id+'">';
-            html += 'Từ chối</label> ';
-            html += '</div></div>';
 		   	html += '</li>';
             html += '</div>';
 		   	$('.notification_teacher_' + current_teacher_id).prepend(html);
@@ -59,7 +49,7 @@ $(document).ready(function(){
         var teacher_id = $(this).next().next().val();
         var _token =  $('#delete-noti-teacher').find("input[name='_token']").val();
         $.ajax({
-            url: '/giang-vien/' + teacher_id + '/thong-bao/delete',
+            url: baseURL + '/giang-vien/' + teacher_id + '/thong-bao/delete',
             dataType:'JSON',
             cache:false,
             type:'GET',
@@ -74,24 +64,24 @@ $(document).ready(function(){
     /**
      * Teacher acceptance
      */
-    $('#delete-noti-teacher').on('change','input:radio',function(){
-         var acceptance = $(this).val();
-         var user_id =  $(this).attr('user-id');
-         var noti_id =  $(this).data('id');
-         var _token =  $('#delete-noti-teacher').find("input[name='_token']").val();
-         var teacher_id =  $(this).parent().parent().parent().parent().prev().val();
-         $.ajax({
-                url: '/giang-vien/'+teacher_id+'/thong-bao/'+ noti_id + '/chap-nhan',
-                dataType:'JSON',
-                cache:false,
-                type:'POST',
-                data: {'_token':_token , 'user_id':user_id,'acceptance':acceptance,'teacher_id':teacher_id},
-                success : function(result){
-
-                }
-         })
-
-    });
+    //$('#delete-noti-teacher').on('change','input:radio',function(){
+    //     var acceptance = $(this).val();
+    //     var user_id =  $(this).attr('user-id');
+    //     var noti_id =  $(this).data('id');
+    //     var _token =  $('#delete-noti-teacher').find("input[name='_token']").val();
+    //     var teacher_id =  $(this).parent().parent().parent().parent().prev().val();
+    //     $.ajax({
+    //            url: '/giang-vien/'+teacher_id+'/thong-bao/'+ noti_id + '/chap-nhan',
+    //            dataType:'JSON',
+    //            cache:false,
+    //            type:'POST',
+    //            data: {'_token':_token , 'user_id':user_id,'acceptance':acceptance,'teacher_id':teacher_id},
+    //            success : function(result){
+    //
+    //            }
+    //     })
+    //
+    //});
 
    
 })

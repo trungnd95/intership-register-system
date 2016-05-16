@@ -52,6 +52,12 @@ Breadcrumbs::register('update-cv', function($breadcrumbs)
     $breadcrumbs->push('Đăng kí thực tập', route('student.regis.index',Auth::user()->id));
 });
 
+ Breadcrumbs::register('company-detail', function($breadcrumbs,$company)
+{
+    $breadcrumbs->parent('register');
+    $breadcrumbs->push($company->name, route('student.regis.companyDetail',[Auth::user()->id,$company->id]));
+});
+
  Breadcrumbs::register('report', function($breadcrumbs)
 {
     $breadcrumbs->parent('home');
@@ -87,6 +93,14 @@ Breadcrumbs::register('new_detail', function($breadcrumbs ,$new)
     $breadcrumbs->parent('home');
     $breadcrumbs->push('Phản hồi', route('student.feedback.getForm'));
 });
+
+
+  Breadcrumbs::register('change-password', function($breadcrumbs)
+{
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Đổi mật khẩu', route('student.changePassword.getView',Auth::user()->id));
+});
+
 
 Breadcrumbs::register('teacher_list', function($breadcrumbs)
 {

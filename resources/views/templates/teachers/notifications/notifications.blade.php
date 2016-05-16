@@ -6,9 +6,9 @@
 	<div class="row">
 		<div class="box">
 		<div class="box-header">
-			<h4 class="">
+			<h2 class="title-header">
 				Tất cả thông báo của giảng viên <a href="#">{{Auth::guard('teachers')->user()->username}}</a><hr/> 
-			</h4>
+			</h2>
 		</div>
 		<!-- /.box-header -->
 		<form method="POST" action="" id="delete-noti-teacher">
@@ -28,31 +28,6 @@
 											<li class="notify-item">
 												<p>{!! $notifyTeacher[$i]->message !!}</p>
 												<span>Vào lúc {!! $notifyTeacher[$i]->created_at !!}</span><br/><br/>
-												<div class="form-group teacher_acceptance">
-													<label class="col-md-4 control-label" >Tùy chọn</label>
-
-													<div class="col-md-4 "> 
-														<?php $teacher_acceptance = \App\User::where('id','=',$notifyTeacher[$i]->user_id)->where('teacher_id','=',$notifyTeacher[$i]->teacher_id)->first();
-
-														?>
-														<label class="radio-inline " >
-															<input type="radio" name="teacher_choosen_{{$notifyTeacher[$i]->id}}"  value="accepted"  class="accepted" data-id="{{$notifyTeacher[$i]->id}}" user-id="{{$notifyTeacher[$i]->user_id}}" 
-															@if($teacher_acceptance->teacher_acceptance == 'accepted')
-															checked
-															@endif
-															>
-															Chấp nhận
-														</label> 
-														<label class="radio-inline" >
-															<input type="radio" name="teacher_choosen_{{$notifyTeacher[$i]->id}}"  value="ignore" class="ignore"  data-id="{{$notifyTeacher[$i]->id}}" user-id="{{$notifyTeacher[$i]->user_id}}" 
-															@if($teacher_acceptance->teacher_acceptance == 'ignore')
-															checked
-															@endif
-															>
-															Từ chối
-														</label> 
-													</div>
-												</div>
 											</li>	
 										</div>
 									@endfor
@@ -64,31 +39,6 @@
 											<li class="notify-item seen">
 												<p>{!! $notifyTeacher[$j]->message !!}</p>
 												<span>Vào lúc {!! $notifyTeacher[$j]->created_at !!}</span><br/><br/>
-												<div class="form-group teacher_acceptance">
-													<label class="col-md-4 control-label" >Tùy chọn</label>
-
-													<div class="col-md-4 "> 
-														<?php $teacher_acceptance = \App\User::where('id','=',$notifyTeacher[$j]->user_id)->where('teacher_id','=',$notifyTeacher[$j]->teacher_id)->first();
-
-														?>
-														<label class="radio-inline " >
-															<input type="radio" name="teacher_choosen_{{$notifyTeacher[$j]->id}}"  value="accepted"  class="accepted" data-id="{{$notifyTeacher[$j]->id}}" user-id="{{$notifyTeacher[$j]->user_id}}" 
-															@if($teacher_acceptance->teacher_acceptance == 'accepted')
-															checked
-															@endif
-															>
-															Chấp nhận
-														</label> 
-														<label class="radio-inline" >
-															<input type="radio" name="teacher_choosen_{{$notifyTeacher[$j]->id}}"  value="ignore" class="ignore"  data-id="{{$notifyTeacher[$j]->id}}" user-id="{{$notifyTeacher[$j]->user_id}}" 
-															@if($teacher_acceptance->teacher_acceptance == 'ignore')
-															checked
-															@endif
-															>
-															Từ chối
-														</label> 
-													</div>
-												</div>
 											</li>	
 										</div>
 									@endfor

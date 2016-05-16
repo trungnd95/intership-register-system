@@ -3,7 +3,7 @@
 @section('breadcrumbs_teacher',Breadcrumbs::render('list_student'))
 @section ('templates.body.content')
 	<div class="list-students">
-		<h3>Danh sách sinh viên hướng dẫn</h3>
+		<h2 class="title-header">Danh sách sinh viên hướng dẫn</h2>
 		<hr/>
 		<?php $stt = 1;?>
 		@foreach($allStudents as $student)

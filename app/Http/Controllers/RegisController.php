@@ -12,6 +12,8 @@ use App\Status;
 use Alert;
 use App\NotificationAdmin;
 use App\Events\NotifyAdmin;
+use App\AdminConfiguration;
+use DB;
 
 class RegisController extends Controller
 {
@@ -30,9 +32,11 @@ class RegisController extends Controller
      */
     public function index($id)
     {
+        $max_register =  AdminConfiguration::select('max_register')->first();
         $companies = Company::with(['statuses'=>function($result){
             $result -> where('user_id','=',Auth::user()->id);
         }])->get();
+
         // $companies_available = array();
         // foreach($companies1 as $company)
         // {
@@ -43,7 +47,7 @@ class RegisController extends Controller
         // }
         // $companies =  Company::with('statuses')->whereIn('id',$companies_available)->paginate(10);
 
-        return view('templates.students.registers.index',compact('companies'));
+        return view('templates.students.registers.index',compact('companies','max_register'));
     }
 
     /**
@@ -104,4 +108,13 @@ class RegisController extends Controller
             return response()->json($call_view);
         }
     }
+
+    public function companyDetail($user_id,$company_id)
+    {   
+        $company = Company::with(['statuses'])->where('id','=',$company_id)->first();
+        
+        // $company = Company::findOrFail($company_id);
+        return view('templates.students.registers.companyDetail',compact('company'));
+    }
+
 }

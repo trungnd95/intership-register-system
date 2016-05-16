@@ -1,74 +1,38 @@
-<div  class="col-xs-1 col-md-1 side-bar" style=" padding-left:10px">
-	<br>
-	<div style="text-align: left; ">
-		<div class="container">
-			<div class="btn-group btn-group-vertical">
+<div  class="col-md-2 side-bar" style=" padding-left:10px;padding-top: 10px">
+	<nav id="site-navigation" class="main-navigation" role="navigation">
+		<div class="sidebar-nav">
+			<!-- Bootstrap Based Menu -->
+			<div class="navbar" role="navigation">
+				<div class="navbar-collapse collapse">
+					<div class="menu-main-menu-container">
+						<ul id="menu-main-menu" class="nav navbar-nav">
+							{{-- <li  style="width: 150px" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="{{route('student.seeProfile',[Auth::user()->id])}}">Profile</a></li> --}}
+							{{-- <li class="clearfix"></li> --}}
+							<?php 
+							$cv = App\Cv::where('user_id','=',Auth::user()->id)->get();
+							if(count($cv) > 0)
+							{
+								$href =  route('student.cv.view',Auth::user()->id);
+								$target = '_blank';
+							}else {
+								$href= route('student.cv.init',Auth::user()->id);
+								$target = "_self";
+							}
 
-				<div class="btn-group">
-					<a href="{{route('student.seeProfile',[Auth::user()->id])}}">
-						<button type="button" class="btn btn-nav">
-							<span class="glyphicon glyphicon-user"></span>
-							<p>Profile</p>
-						</button>
-					</a>
-				</div>
-
-				<div class="btn-group">
-					<?php 
-						$cv = App\CV::where('user_id','=',Auth::user()->id)->get();
-						if(count($cv) > 0)
-						{
-							$href =  route('student.cv.view',Auth::user()->id);
-							$target = '_blank';
-						}else {
-							$href= route('student.cv.init',Auth::user()->id);
-							$target = "_self";
-						}
-
-					?>
-					<a href="{{$href}}" target="{{$target}}">
-						<button type="button" class="btn btn-nav">
-							<span class="glyphicon glyphicon-file"></span>
-							<p>CV</p>
-						</button>
-					</a>
-				</div>
-				<div class="btn-group">
-					<a href="{{route('student.news.index')}}">
-						<button type="button" class="btn btn-nav">
-							<span class="glyphicon glyphicon-list"></span>
-							<p>Tin <br/>tuyển dụng</p>
-						</button>
-					</a>
-				</div>
-				
-				<div class="btn-group">
-					<a href="{{route('student.regis.index',[Auth::user()->id])}}">
-						<button type="button" class="btn btn-nav">
-							<span class="glyphicon glyphicon-ok"></span>
-							<p>Đăng kí TT </p>
-						</button>
-					</a>
-				</div>
-
-				<div class="btn-group">
-					<a href="{{route('student.report.index',[Auth::user()->id])}}">
-						<button type="button" class="btn btn-nav">
-							<span class="glyphicon glyphicon-save-file"></span>
-							<p>Báo cáo</p>
-						</button>
-					</a>
-				</div>
-
-				<div class="btn-group">
-					<a href="{{route('student.status.indentify',[Auth::user()->id])}}">
-						<button type="button" class="btn btn-nav">
-							<span class="glyphicon glyphicon-bullhorn"></span>
-							<p>Tình trạng</p>
-						</button>
-					</a>
-				</div>
+							?>
+							<li  class="menu-item menu-item-type-taxonomy menu-item-object-category current-menu-item"><a href="{{$href}}" target="{{$target}}">Sơ yếu lí lịch</a></li>
+							<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="{{route('student.news.index')}}">Tin tuyển dụng</a></li>
+							<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="{{route('student.regis.index',[Auth::user()->id])}}">Đăng kí thực tập</a></li>
+							<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="{{route('student.report.index',[Auth::user()->id])}}">Báo cáo</a></li>
+							<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="{{route('student.status.indentify',[Auth::user()->id])}}">Tình trạng đăng kí</a></li>
+							{{-- <li><a href="{{route('student.changePassword.getView',Auth::user()->id)}}">Đổi mật khẩu</a></li>
+							<li style="width: 150px"><hr/></li> --}}
+						</ul>
+						
+					</div>									
+				</div><!--/.nav-collapse -->
 			</div>
 		</div>
-	</div>
+	</nav>
+
 </div>

@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('avatar');
             $table->boolean('confirmed');
             $table->string('confirmation_code');
-            $table->enum('teacher_acceptance',['accepted','pending','ignore']);
+//            $table->enum('teacher_acceptance',['accepted','pending','ignore']);
             $table->integer('teacher_id')->unsigned();
             $table->foreign('teacher_id')->references('id')->on('teachers')->onDelete('cascade');
             $table->rememberToken();

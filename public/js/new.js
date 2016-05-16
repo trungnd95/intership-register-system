@@ -7,7 +7,7 @@ $(document).ready(function(){
 	$('.confirm_del').on('click',function(){
 		$("#delete-new").modal('hide').delay('500');
 		var new_id = $(this).data('new_id');
-		var url = "/admin/tin-tuc/" + new_id + "/delete";
+		var url = baseURL + "/admin/tin-tuc/" + new_id + "/delete";
 		var _token = $('#form-index-new').find("input[name='_token']").val();
 		$.ajax({
 			url:url,

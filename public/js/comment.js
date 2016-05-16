@@ -29,12 +29,14 @@ $(document).ready(function(){
 
 	$('.comment-report').on('submit',function(e){
 		e.preventDefault();
+		// $("textarea[name='comment-content']").text('');
 		var comment = $(this).find('.comment-field').val();
+		$(this).find('.comment-field').val('');
 		var _token = $(this).find("input[name='_token']").val();
 		var guard = $(this).find('.guard').attr('guard');
 		var guard_id = $(this).find('.guard_id').attr('guard-id');
 		var comment_id =  $(this).find('.report_id').data('id');
-		var url = '/bao-cao/'+ comment_id +'/binh-luan';
+		var url = baseURL + '/bao-cao/'+ comment_id +'/binh-luan';
 		$.ajax({
 			url: url,
 			type:'POST',

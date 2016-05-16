@@ -124,7 +124,7 @@ class SlideController extends Controller
     		return back()->withInput()->withErrors($validator);
     	}
 
-    	// $slide = Slide::findOrFail($id);
+    	$slide = Slide::findOrFail($id);
     	// $image = $slide->image;
     	// if(Request::file('slide'))
     	// {

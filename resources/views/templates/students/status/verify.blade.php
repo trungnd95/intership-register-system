@@ -3,7 +3,7 @@
 @section('breadcrumbs',Breadcrumbs::render('status'))
 @section('templates.body.content')
 	<div class="verify">
-		<h5>Thông báo</h5>
+		<h2 class="title-header">Thông báo</h2>
 		<p>
 			Bạn đã đăng kí công ty	<strong> {{ $company->name }} </strong>để thực tập.<br/>
 			Nếu bạn muốn thay đổi công ty. <a href="{{ route('student.status.indentify',[Auth::user()->id]) }}" >Trở về </a><br/>

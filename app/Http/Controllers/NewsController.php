@@ -19,7 +19,7 @@ class NewsController extends Controller
 	 */
     public function index()
     {   
-        $news  = News::with('schoolyear')->paginate(10);
+        $news  = News::with('schoolyear')->paginate(5);
 
         if(Auth::guard('teachers')->getUser() != null)
         {
@@ -42,7 +42,7 @@ class NewsController extends Controller
     public function detail($slug)
     {
         $new = News::where('slug','=',$slug)->first();
-        $relateds = News::select('*')->whereNotIn('slug',[$slug])->take(5)->get();
+        $relateds = News::select('*')->whereNotIn('slug',[$slug])->take(4)->get();
         if(Auth::guard('teachers')->getUser() != null)
         {
             return view('templates.teachers.news.detail',compact('new','relateds'));

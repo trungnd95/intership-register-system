@@ -4,45 +4,51 @@
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<meta content="text/html;charset=utf-8" http-equiv="content-type">
 	<meta content="FitUET - Khoa Công Nghệ Thông Tin - Hệ Thống Đăng Ký Thực Tập" name="description">
-	<link rel="shortcut icon" href="{{asset('/public/images/fit.png')}}" type="image/x-icon" />
+	<link rel="shortcut icon" href="{{asset('/images/fit.png')}}" type="image/x-icon" />
 	<!-- Bootstrap-->
-	<link href="{{asset('/public/lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet"/>
-	<link href="{{asset('/public/lib/bootstrap/css/bootstrap-theme.min.css')}}" rel="stylesheet"/>
+	<link href="{{asset('/lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet"/>
+	<link href="{{asset('/lib/bootstrap/css/bootstrap-theme.min.css')}}" rel="stylesheet"/>
 	<!-- Ionicons -->
   	<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   	<!-- Theme style -->
-  	<link rel="stylesheet" href="{{ url('public/lib/admin/dist/css/AdminLTE.min.css') }}">
+  	<link rel="stylesheet" href="{{ url('/lib/admin/dist/css/AdminLTE.min.css') }}">
   	<!-- iCheck -->
-  	<link rel="stylesheet" href="{{ url('public/lib/admin/plugins/iCheck/square/blue.css') }}">
+  	<link rel="stylesheet" href="{{ url('/lib/admin/plugins/iCheck/square/blue.css') }}">
   	<!-- Font Awesome-->
-	<link href="{{asset('/public/lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet"/>
+	<link href="{{asset('/lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet"/>
 	<!-- Sweet Alert Css-->
-	<link href="{{asset('/public/lib/sweetalert/sweetalert-master/dist/sweetalert.css')}}" rel="stylesheet"/>
-	<link rel="stylesheet" href="{{asset('public/lib/admin/dist/css/skins/skin-blue.min.css')}}">
+	<link href="{{asset('/lib/sweetalert/sweetalert-master/dist/sweetalert.css')}}" rel="stylesheet"/>
+	<link rel="stylesheet" href="{{asset('/lib/admin/dist/css/skins/skin-blue.min.css')}}">
 	<!-- Data Table --> 
-	<link rel="stylesheet" type="text/css" href="{{asset('/public/lib/dataTable/jquery.dataTables.min.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{asset('/public/lib/dataTable/dataTables.bootstrap.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('/lib/dataTable/jquery.dataTables.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('/lib/dataTable/dataTables.bootstrap.min.css')}}">
 	<!-- Custom CSS-->
-	<link href="{{asset('/public/css/auth.css')}}" rel="stylesheet"/>
-	<link href="{{asset('/public/css/load-ajax.css')}}" rel="stylesheet"/>
-	<link href="{{asset('/public/css/custom.css')}}" rel="stylesheet"/>
-	<link href="{{asset('/public/css/common.css')}}" rel="stylesheet"/>
-	<link href="{{asset('/public/css/admin.css')}}" rel="stylesheet"/>
-	<link href="{{asset('/public/css/cv.css')}}" rel="stylesheet"/>
-	<link href="{{asset('/public/css/news.css')}}" rel="stylesheet"/>
-	<link href="{{asset('/public/css/register.css')}}" rel="stylesheet"/>
-	<link href="{{asset('/public/css/notification.css')}}" rel="stylesheet"/>
-	<link href="{{asset('/public/css/rightbar.css')}}" rel="stylesheet"/>
-	<link href="{{asset('/public/css/breadcrumbs.css')}}" rel="stylesheet"/>
+	<link href="{{asset('/css/auth.css')}}" rel="stylesheet"/>
+	<link href="{{asset('/css/load-ajax.css')}}" rel="stylesheet"/>
+	<link href="{{asset('/css/custom.css')}}" rel="stylesheet"/>
+	<link href="{{asset('/css/common.css')}}" rel="stylesheet"/>
+	<link href="{{asset('/css/admin.css')}}" rel="stylesheet"/>
+	<link href="{{asset('/css/cv.css')}}" rel="stylesheet"/>
+	<link href="{{asset('/css/news.css')}}" rel="stylesheet"/>
+	<link href="{{asset('/css/register.css')}}" rel="stylesheet"/>
+	<link href="{{asset('/css/notification.css')}}" rel="stylesheet"/>
+	<link href="{{asset('/css/rightbar.css')}}" rel="stylesheet"/>
+	<link href="{{asset('/css/breadcrumbs.css')}}" rel="stylesheet"/>
+	<link href="{{asset('/css/leftsidebar.css')}}" rel="stylesheet"/>
+	<!--Datetime picker -->
+	<link href="{{asset('/lib/datetimepicker/bootstrap-datetimepicker.min.css')}}" rel="stylesheet"/>
 	<!--JQuery UI -->
-	<link href="{{asset('/public/lib/jquery-ui/jquery-ui.min.css')}}" rel="stylesheet"/>
+	<link href="{{asset('/lib/jquery-ui/jquery-ui.min.css')}}" rel="stylesheet"/>
+	
 	<!-- CKeditor , Ckfinder-->
-	<script src="{{asset('public/lib/editor/ckeditor/ckeditor.js')}}" type="text/javascript" charset="utf-8" ></script>
-	<script src="{{asset('public/lib/editor/ckfinder/ckfinder.js')}}" type="text/javascript" charset="utf-8" ></script>
+	<script src="{{asset('/lib/editor/ckeditor/ckeditor.js')}}" type="text/javascript" charset="utf-8" ></script>
+	<script src="{{asset('/lib/editor/ckfinder/ckfinder.js')}}" type="text/javascript" charset="utf-8" ></script>
+	
 	<script >
-			var baseURL = "{!! url('/')!!}"
+			var baseURL = "{!! url('/')!!}";
+			
 	</script>
-	<script src="{{asset('public/lib/editor/func_ckfinder.js')}}" type="text/javascript" charset="utf-8" ></script>
+	<script src="{{asset('/lib/editor/func_ckfinder.js')}}" type="text/javascript" charset="utf-8" ></script>
 
 	<script language="javascript">
          function BrowseServer( startupPath, functionData )
@@ -171,7 +177,7 @@
 	 	function saveDataToDatabase(editableObj,column,id,url,name) {
 			var _token =  getToken1(name);
 
-			$(editableObj).css("background","#FFF url('/public/images/loaderIcon.gif') no-repeat right");
+			$(editableObj).css("background","#FFF url('/images/loaderIcon.gif') no-repeat right");
 			var editval = editableObj.innerHTML;
 			if($(editableObj).children().is('select'))
 			{

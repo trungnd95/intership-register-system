@@ -18,14 +18,14 @@
 						<thead>
 							<tr>
 								<th>STT</th>
-								<th>Tên</th>
+								<th>Tên/Username</th>
 								<th>Lớp khóa học</th>
 								<th>MSV</th>
 								<th>CV</th>
 								<th>Công ty đăng kí</th>
 								<th>Tình trạng</th>
-								<th>Giảng viên hướng dẫn</th>
-								<th>Tình trạng</th>
+								{{--<th>Giảng viên hướng dẫn</th>--}}
+								{{--<th>Tình trạng</th>--}}
 								<th>Tình trạng liên hệ vs cty</th>
 							</tr>	
 						</thead>
@@ -35,9 +35,27 @@
 								@foreach($student->statuses as $item)
 								<tr class="text-center row-content">
 									<td>{{ $stt }}</td>
-									<td>{!! $student->full_name !!}</td>
-									<td>{!! $student->class_name !!}</td>
-									<td>{{$student->student_code}}</td>
+									<td>
+										@if(count($student->cv) > 0)
+											{{$student->cv->name}}
+										@else
+											{{ $student->user_name}}
+										@endif
+									</td>
+									<td>
+										@if(count($student->cv) > 0)
+											{{ $student->cv->class}}
+										@else 
+											Chưa cập nhật cv
+										@endif
+									</td>
+									<td>
+										@if(count($student->cv) > 0)
+											{{ $student->cv->student_code}}
+										@else 
+											Chưa cập nhật cv
+										@endif
+									</td>
 									<td><a href="{{ route('admin.notify.cvView',[$student->id]) }}" target="_blank">Xem CV</a></td>
 									<td>
 										{{$item->company->name}}
@@ -56,9 +74,17 @@
 										
 										<div class="div_edit_company_status_{{$item->id}} hidden">
 											<select name="company_status edit-company-status"class="form-control" required="required">
-												<option value="success">Đã chấp nhận</option
+												<option value="success"
+												@if($item->acceptance == "success")
+													selected
+												@endif
+												>Đã chấp nhận</option
 												>
-												<option value="failure">Không được chấp nhận</option
+												<option value="failure"
+												@if($item->acceptance == "failure")
+													selected
+												@endif
+												>Không được chấp nhận</option
 												>
 											</select>
 											<a href="#" class="btn btn-success save-edit-company-status-{{$item->id}}">Lưu</a>
@@ -66,22 +92,22 @@
 										</div>
 
 									</td>
-									<td>
-										@if($student->teacher != null)
-											{{$student->teacher->full_name}}
-										@else 
-											Chưa chọn giảng viên
-										@endif
-									</td>
-									<td>
-										@if($student->teacher_acceptance == 'accepted')
-											Đã chấp nhận
-										@elseif ($student->teacher_acceptance == 'pending')
-											Đang chờ
-										@else ($student->teacher_acceptance == 'ignore')
-											Không được chấp nhận
-										@endif
-									</td>
+									{{--<td>--}}
+										{{--@if($student->teacher != null)--}}
+											{{--{{$student->teacher->full_name}}--}}
+										{{--@else --}}
+											{{--Chưa chọn giảng viên--}}
+										{{--@endif--}}
+									{{--</td>--}}
+									{{--<td>--}}
+										{{--@if($student->teacher_acceptance == 'accepted')--}}
+											{{--Đã chấp nhận--}}
+										{{--@elseif ($student->teacher_acceptance == 'pending')--}}
+											{{--Đang chờ--}}
+										{{--@else ($student->teacher_acceptance == 'ignore')--}}
+											{{--Không được chấp nhận--}}
+										{{--@endif--}}
+									{{--</td>--}}
 									<td>
 										<div class="contact-{{$item->id}}">
 											@if($item->contacted == 1)

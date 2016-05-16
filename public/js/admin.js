@@ -12,7 +12,7 @@ $(document).ready(function(){
 			var result =  $(this).prev().val();	
 			var _token = $('#form-index-status').find("input[name='_token']").val();
 			var status_id = $(this).next().val();
-			var url  = '/admin/tinh-trang-dang-ki/'+status_id +'/cap-nhat';
+			var url  = baseURL + '/admin/tinh-trang-dang-ki/'+status_id +'/cap-nhat';
 			$.ajax({
 				url: url,
 				dataType:'JSON',
@@ -52,7 +52,7 @@ $(document).ready(function(){
 			var result =  $(this).prev().val();	
 			var _token = $('#form-index-status').find("input[name='_token']").val();
 			var status_id = $(this).next().val();
-			var url  = '/admin/tinh-trang-dang-ki/'+status_id +'/cap-nhat';
+			var url  = baseURL + '/admin/tinh-trang-dang-ki/'+status_id +'/cap-nhat';
 			$.ajax({
 				url: url,
 				dataType:'JSON',
@@ -103,7 +103,7 @@ $(document).ready(function(){
 				}
 				var _token = $('#form-edit-noti-status').find("input[name='_token']").val();
 				$.ajax({
-					url: '/admin/thong-bao/sua',
+					url: baseURL + '/admin/thong-bao/sua',
 					type:'POST',
 					dataType:'JSON',
 					cache:false,
@@ -134,4 +134,41 @@ $(document).ready(function(){
 	// 	return false;
 	// });
 
+
+	/**
+	 * Allocate teacher instruction to student
+	 */
+
+	$('body').on('click','.teacher_instruction_edit',function(){
+		$(this).parent().addClass('hidden');
+		$(this).parent().next().removeClass('hidden');
+
+		$("select[name='allocate_teacher_instruction']").unbind().on('change',function(){
+			$(this).parent().parent().css("background","#FFF url('/public/images/loaderIcon.gif') no-repeat right");
+			var teacher_id = $(this).val();
+			var student_id = $(this).data('user_id');
+			var _token = $('#form-index-student-list').find("input[name='_token']").val();
+			$.ajax({
+				url : baseURL + '/admin/sinh-vien/phan-cong-giang-vien',
+				dataType:'JSON',
+				cache:false,
+				type: 'POST',
+				data: {'_token':_token, 'teacher_id':teacher_id, 'student_id':student_id},
+				success:function(result)
+				{
+					$('.form-edit-teacher-instruction-'+result.student).addClass('hidden');
+					$('.teacher_instruction_' + result.student).css('background','#fff');
+					$('.teacher_name_' + result.student).removeClass('hidden');
+					$('.teacher_name_' + result.student).find('span').html(result.teacher);
+				}
+			});
+		})
+	});
+
+
+	// $('.datetimeRegis').on('change','input',function(){
+		// var time = $(this).val();
+		// alert(time);
+	// });
+	// console.log($('.datetimeRegis').find('input').val());
 })

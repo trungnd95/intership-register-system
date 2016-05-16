@@ -25,7 +25,7 @@ $(document).ready(function(){
 			var full_name = $(this).html();
 			var short_name = $(this).next().html();
 			var _token = $('#form-index-schoolyear').find("input[name='_token']").val();
-			var url = "/admin/khoa-hoc/them";
+			var url = baseURL + "/admin/khoa-hoc/them";
 			$.ajax({
 				url: url,
 				dataType:'JSON',
@@ -50,7 +50,7 @@ $(document).ready(function(){
 	 $('.confirm_del_schoolyear').on('click',function(){
 	 	$("#delete-schoolyear").modal('hide').delay('500');
 	 	var schoolyear_id = $(this).data('schoolyear_id');
-	 	var url = "/admin/khoa-hoc/" + schoolyear_id + "/delete";
+	 	var url = baseURL + "/admin/khoa-hoc/" + schoolyear_id + "/delete";
 	 	var _token = $('#form-index-schoolyear').find("input[name='_token']").val();
 	 	$.ajax({
 	 		url:url,
