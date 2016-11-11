@@ -69,14 +69,20 @@ header.templates nav {
 header.templates nav h1 {
 	color: #044c79;
 	text-transform:uppercase;
-	line-height:80px;
+	/*line-height:80px;*/
 	/*font-family: "Great Vibes", cursive;*/
+	margin-top: 25px;
+}
 
+header.templates nav h4 {
+	color: #044c79;
+	margin-top: 20px;
+	margin-bottom: -15px;
 }
 
 header.templates nav a img {
 	float: left;
-	margin-left: 20px;
+	margin-left: 105px;
 
 }
 

@@ -14,9 +14,9 @@
 				<span style="font-size:9px" class="developed">Developed by fit-uet team</span>
 			</div>
 			<div class="col-sm-4 buttons">
-				<a class="btn btn-link" target="_blank" href="http://uet.vnu.edu.vn">
+				<a class="btn btn-link" title="Trang chủ UET" target="_blank" href="http://uet.vnu.edu.vn">
 					<img src="{{ asset('/images/uet.jpg')}}" alt="UET" />
-					<span class="uet-home">Trang chủ UET</span>
+					{{-- <span class="uet-home">Trang chủ UET</span> --}}
 				</a>
 				<!-- <a class="btn btn-link" target="_blank" href="http://cait.vnu.edu.vn">Trang chủ CAIT</a> -->
 			</div>

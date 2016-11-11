@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 13, 2016 at 04:58 PM
+-- Generation Time: May 18, 2016 at 05:10 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `admin_configurations` (
 --
 
 INSERT INTO `admin_configurations` (`id`, `time_start`, `time_end`, `max_register`, `send_notify_student`, `send_notify_teacher`, `created_at`, `updated_at`) VALUES
-(1, '05/20/2016 12:00 AM', '05/30/2016 12:00 AM', 5, 0, 0, '2016-05-11 16:16:46', '2016-05-12 02:42:37');
+(1, '16/05/2016 02:46 AM', '30/05/2016 00:00 AM', 5, 0, 0, '2016-05-11 16:16:46', '2016-05-15 12:45:44');
 
 -- --------------------------------------------------------
 
@@ -82,14 +82,17 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `report_id` int(10) unsigned NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `comments`
 --
 
 INSERT INTO `comments` (`id`, `username`, `comment`, `avatar_src`, `role`, `report_id`, `created_at`, `updated_at`) VALUES
-(1, 'trungnd', 'đhgfh', 'http://internship.dev/public/public/upload/images/students/581928_1670129466594140_8209382342078513355_n.jpg', 'student', 1, '2016-05-13 03:16:05', '2016-05-13 03:16:05');
+(1, 'trungnd', 'đhgfh', 'http://internship.dev/public/public/upload/images/students/581928_1670129466594140_8209382342078513355_n.jpg', 'student', 1, '2016-05-13 03:16:05', '2016-05-13 03:16:05'),
+(2, 'trungnd', 'abcd', 'http://internship.dev/public/public/upload/images/students/581928_1670129466594140_8209382342078513355_n.jpg', 'student', 1, '2016-05-14 06:18:26', '2016-05-14 06:18:26'),
+(3, 'trungnd', 'acv', 'http://internship.dev/public/public/upload/images/students/1970599_698535993546934_2775003922343183766_n.jpg', 'student', 1, '2016-05-15 13:32:41', '2016-05-15 13:32:41'),
+(4, 'trungnd', 'test', 'http://internship.dev/public/upload/images/students/1970599_698535993546934_2775003922343183766_n.jpg', 'student', 1, '2016-05-15 13:33:16', '2016-05-15 13:33:16');
 
 -- --------------------------------------------------------
 
@@ -114,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `companies` (
 --
 
 INSERT INTO `companies` (`id`, `name`, `address`, `contact`, `recruitment_amount`, `description`, `services`, `created_at`, `updated_at`) VALUES
-(1, 'Fsof', 'Toa nha Fsof ,Duy Tan, Cau Giay , Ha Noi', 'hr@fsorf.com.vn', 10, 'Fsoft la 1 cong ty phan m?m  s? 1 vi?t nam .M?ng ch', 'Web app ', '2016-04-12 20:46:34', '2016-04-12 20:46:34'),
+(1, 'Fsof', 'Toa nha Fsof ,Duy Tan, Cau Giay , Ha Noi', 'hr@fsorf.com.vn', 10, 'Fsoft là 1 công ty phần mềm hàng đầu việt nam với phần lớn thị phần đến từ lĩnh vực outsourcing.\nfdjfkljdlasfjdlsfjdlasf\nfdsfljdaslfklas', 'Web app ', '2016-04-12 20:46:34', '2016-04-12 20:46:34'),
 (2, 'Framgia', 'Toa nha KangNam, Pham HUng,Ha Noi', 'hr@framgia.com.vn', 20, 'Framgia la 1 cong ty co 100% von dau tu cua nhat ban', 'Web app với ruby on rails', '2016-04-12 23:56:06', '2016-04-12 23:56:06'),
 (3, 'Savycom', 'Duy Tan, Cau Giay , Ha Noi', 'hr@savvycom.com.vn', 5, 'Savycom la 1 cong ty tre moi thanh lap nhung da khang dinh duoc vi the cua minh', 'NodeJs', '2016-04-13 10:52:30', '2016-04-13 10:52:30'),
 (4, 'Viettel', 'Tay Ho, Ha Noi', 'hr@viettel.com.vn', 50, 'Tap doan vien thong quan doi Viettel', 'Công nghệ nhúng vs Java', '2016-04-13 13:04:34', '2016-04-13 13:04:34'),
@@ -132,10 +135,12 @@ CREATE TABLE IF NOT EXISTS `cvs` (
   `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `student_code` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
   `class` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  `mark_average` double DEFAULT NULL,
   `phone_number` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email1` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
   `address` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `date_of_birth` date NOT NULL,
   `personal_website` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `short_selfintro` text COLLATE utf8_unicode_ci NOT NULL,
   `education` longtext COLLATE utf8_unicode_ci NOT NULL,
@@ -153,9 +158,9 @@ CREATE TABLE IF NOT EXISTS `cvs` (
 -- Dumping data for table `cvs`
 --
 
-INSERT INTO `cvs` (`id`, `name`, `image`, `student_code`, `class`, `phone_number`, `email`, `email1`, `address`, `personal_website`, `short_selfintro`, `education`, `skills`, `technical`, `experiences`, `hobbies`, `others`, `user_id`, `created_at`, `updated_at`) VALUES
-(4, 'fdffdfd12345', '1970599_698535993546934_2775003922343183766_n.jpg', '13020461', 'QH2013I/CQ', '0974555629', 'abc@vnu.edu.vn', 'abcd@gmail.com', 'Thai Binh', '', '<p>fdfdfdfdfdfdfdfdfd</p>\r\n', '2013-2017\r\nĐại học Công nghệ - Đại học Quốc Gia Hà Nội\r\n', '<p>gagfagas</p>\r\n', '<p>gdgadfgdghd</p>\r\n', '<p>gdgd</p>\r\n', '<p>gdgdg</p>\r\n', '', 12, '2016-04-10 11:09:18', '2016-05-13 01:35:59'),
-(7, 'Trung Manucian', '5c669d9af291d880d2f5e598247b0759.jpg', '12020462', 'QH2013ICQ', '09755555555', 'trung@vnu.edu.vn', '', 'thái bình', '', '<p>fafafasfasfasfasfasfasf</p>\r\n', '<p>fafafasfasfasfasfasfasf</p>\r\n', '<p>fafafasfasfasfasfasfasf</p>\r\n', '<p>fafafasfasfasfasfasfasf</p>\r\n', '<p>fafafasfasfasfasfasfasf</p>\r\n', '<p>fafafasfasfasfasfasfasf</p>\r\n', '<p>fafafasfasfasfasfasfasf</p>\r\n', 34, '2016-05-07 10:16:30', '2016-05-07 10:16:30');
+INSERT INTO `cvs` (`id`, `name`, `image`, `student_code`, `class`, `mark_average`, `phone_number`, `email`, `email1`, `address`, `date_of_birth`, `personal_website`, `short_selfintro`, `education`, `skills`, `technical`, `experiences`, `hobbies`, `others`, `user_id`, `created_at`, `updated_at`) VALUES
+(4, 'fdffdfd123456', '1970599_698535993546934_2775003922343183766_n.jpg', '13020461', 'QH2013I/CQ', 3.36, '0974555629', 'abc@vnu.edu.vn', 'abcd@gmail.com', 'Thai Binh', '1995-08-08', '', '<p>fdfdfdfdfdfdfdfdfd</p>\r\n', 'Cetificate for good freshman, sophomore\r\nScholarship for semester 2,3\r\n', '<p>gagfagas</p>\r\n', '<p>gdgadfgdghd</p>\r\n', '<p>gdgd</p>\r\n', '<p>gdgdg</p>\r\n', '', 12, '2016-04-10 11:09:18', '2016-05-16 22:16:31'),
+(7, 'Trung Manucian', '5c669d9af291d880d2f5e598247b0759.jpg', '12020462', 'QH2013ICQ', NULL, '09755555555', 'trung@vnu.edu.vn', '', 'thái bình', '0000-00-00', '', '<p>fafafasfasfasfasfasfasf</p>\r\n', '<p>fafafasfasfasfasfasfasf</p>\r\n', '<p>fafafasfasfasfasfasfasf</p>\r\n', '<p>fafafasfasfasfasfasfasf</p>\r\n', '<p>fafafasfasfasfasfasfasf</p>\r\n', '<p>fafafasfasfasfasfasfasf</p>\r\n', '<p>fafafasfasfasfasfasfasf</p>\r\n', 34, '2016-05-07 10:16:30', '2016-05-07 10:16:30');
 
 -- --------------------------------------------------------
 
@@ -245,7 +250,8 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 ('2016_05_05_094322_create_teacher_notifications_table', 9),
 ('2016_05_06_061516_create_partners_table', 10),
 ('2016_05_11_034059_create_register_times_table', 11),
-('2016_05_11_081136_create_admin_configurations_table', 12);
+('2016_05_11_081136_create_admin_configurations_table', 12),
+('2016_05_17_135718_create_notifications_table', 13);
 
 -- --------------------------------------------------------
 
@@ -275,6 +281,27 @@ INSERT INTO `news` (`id`, `title`, `content`, `short_des`, `slug`, `schoolyear_i
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `notifications`
+--
+
+CREATE TABLE IF NOT EXISTS `notifications` (
+  `id` int(10) unsigned NOT NULL,
+  `content` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `notifications`
+--
+
+INSERT INTO `notifications` (`id`, `content`, `created_at`, `updated_at`) VALUES
+(1, 'Thông báo 1', '2016-05-17 18:58:21', '2016-05-17 18:59:37'),
+(4, 'Thông báo 2', '2016-05-17 19:08:46', '2016-05-17 19:08:46');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `notification_admins`
 --
 
@@ -286,7 +313,15 @@ CREATE TABLE IF NOT EXISTS `notification_admins` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `user_id` int(10) NOT NULL,
   `company_id` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `notification_admins`
+--
+
+INSERT INTO `notification_admins` (`id`, `message`, `seen`, `created_at`, `updated_at`, `user_id`, `company_id`) VALUES
+(1, 'trungnd vừa đăng kí thực tập tại công ty Framgia', 1, '2016-05-14 05:57:42', '2016-05-16 04:13:33', 12, 2),
+(2, 'trungnd vừa đăng kí thực tập tại công ty Savycom', 1, '2016-05-16 02:07:48', '2016-05-16 04:13:33', 12, 3);
 
 -- --------------------------------------------------------
 
@@ -452,16 +487,21 @@ CREATE TABLE IF NOT EXISTS `statuses` (
   `choosen` tinyint(1) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=140 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=156 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `statuses`
 --
 
 INSERT INTO `statuses` (`id`, `user_id`, `company_id`, `contacted`, `acceptance`, `choosen`, `created_at`, `updated_at`) VALUES
-(135, 12, 1, 1, 'failure', 0, '2016-05-05 02:33:43', '2016-05-13 02:17:19'),
 (138, 34, 1, 1, 'pending', 0, '2016-05-07 05:41:56', '2016-05-07 05:46:13'),
-(139, 12, 4, 1, 'pending', 0, '2016-05-08 21:42:37', '2016-05-08 21:43:21');
+(146, 12, 1, 0, 'success', 0, '2016-05-17 04:20:26', '2016-05-17 06:50:00'),
+(147, 12, 2, 0, 'pending', 0, '2016-05-17 04:20:26', '2016-05-17 04:20:26'),
+(148, 12, 3, 0, 'pending', 0, '2016-05-17 04:20:26', '2016-05-17 04:20:26'),
+(149, 12, 4, 0, 'pending', 0, '2016-05-17 04:20:26', '2016-05-17 04:20:26'),
+(153, 53, 4, 0, 'success', 0, '2016-05-17 06:21:22', '2016-05-17 19:52:23'),
+(154, 53, 1, 0, 'success', 0, '2016-05-17 06:21:22', '2016-05-17 06:51:44'),
+(155, 53, 6, 0, 'success', 1, '2016-05-17 06:21:22', '2016-05-17 19:54:09');
 
 -- --------------------------------------------------------
 
@@ -603,11 +643,11 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `user_name`, `full_name`, `email`, `password`, `student_code`, `class_name`, `birth_day`, `phone_number`, `avatar`, `confirmed`, `confirmation_code`, `teacher_acceptance`, `teacher_id`, `remember_token`, `created_at`, `updated_at`) VALUES
 (5, 'trungnd1', 'ABCDEF', 'trungnd_581@vnu.edu.vn', '$2y$10$oLyZi9U6U.AdFIZ3wikdp.DCpmjsXKOB3bbu90FufQl.pIN2cRA1C', 54311, 'K58CD', '0000-00-00', '0974555629', '', 1, 'IfNBHtM7Dx', 'accepted', 9, 'cdKBsSVWmNrbMaRSfPal9WIJPjwYcuoaMynEtDj1WI6CtDNGuuRvcWEvdnt9', '2016-04-02 04:24:35', '2016-05-10 19:04:12'),
-(12, 'trungnd', 'Nguyễn Trung', 'abc@vnu.edu.vn', '$2y$10$BvAPOy.1uz5wi5Dd3rThA.IJQB/rxrsfqxRSIAevGS2pAf91n9A4e', 13020461, 'K58cd', '1994-09-08', '0974555629', '581928_1670129466594140_8209382342078513355_n.jpg', 1, 'EAJ1ikbUPC', 'ignore', 4, 'IldJgbj0pwc0WSYZuNsV6dPXi9ZzmizpiSB3ynQb9M6LAry63XpOJ452PEJa', '2016-04-02 04:49:46', '2016-05-13 07:57:07'),
+(12, 'trungnd', 'Nguyễn Trung', 'abc@vnu.edu.vn', '$2y$10$BvAPOy.1uz5wi5Dd3rThA.IJQB/rxrsfqxRSIAevGS2pAf91n9A4e', 13020461, 'K58cd', '1994-09-08', '0974555629', '581928_1670129466594140_8209382342078513355_n.jpg', 1, 'EAJ1ikbUPC', 'ignore', 4, 'SVaXDYohnaO0piTmHhLVD9UtQ2BYgRch46CGAsEnrxbi0lWYEhu5obL0UeNQ', '2016-04-02 04:49:46', '2016-05-17 19:16:02'),
 (34, 'trungnd12', '', 'trung@vnu.edu.vn', '$2y$10$LFVMFfJF/kHl8Fyz7lQcuuV6u6IdlubSmlyprPaMsVMmq/PCNVJ0C', 1462624632, '', '0000-00-00', '1462624633', '', 1, '', '', 9, NULL, '2016-05-07 05:37:12', '2016-05-10 19:04:27'),
 (51, 'trungnd95', '', 'trungnd_58@vnu.edu.vn', '$2y$10$PnEMnVdidbYFC9c258wFsOdvWBZ0ialPDzywGofYr1w69w351yxRu', 1463033223, '', '0000-00-00', '1463033224', '', 1, '', '', 10, 'fyhzMSBRgsQO1CpxTmleQiv5xzVFLD8eAr2YqVm02F1GMqxs7SZgsJMB3zWO', '2016-05-11 23:07:03', '2016-05-13 02:19:01'),
 (52, 'hoangnd', '', 'hoangnh_58@vnu.edu.vn', '$2y$10$6gkN8ABYtpWC4uHSyA4pG..6dF0wNw1AjpTa.IPeWpUTz6id/As4u', 1463052666, '', '0000-00-00', '1463052667', '', 0, 'jUJAGtIRMi', '', NULL, NULL, '2016-05-12 04:31:06', '2016-05-12 04:31:06'),
-(53, 'abcd', '', 'abcd@vnu.edu.vn', '$2y$10$KJ2jCiSmhLkcaM5erJJcm.hVac1n5jKASxCezzOnCk1x5abPiknuG', 1463109049, '', '0000-00-00', '1463109050', '', 1, '', '', 4, 'aZNk8VX3jA7t7SQVVMXYo3K0V1y8INdrn31qVvbIWYfThY21mNnQbOQCBFGi', '2016-05-12 20:10:49', '2016-05-13 06:16:55'),
+(53, 'abcd', '', 'abcd@vnu.edu.vn', '$2y$10$KJ2jCiSmhLkcaM5erJJcm.hVac1n5jKASxCezzOnCk1x5abPiknuG', 1463109049, '', '0000-00-00', '1463109050', '', 1, '', '', 4, 'VC5egPLA02KYDdE07Wb6z5ois2NKoyj0OptP7Zze9tKqTaGMh4AM1aTCyj2B', '2016-05-12 20:10:49', '2016-05-15 13:14:51'),
 (54, 'abcdef', '', 'abcdef@vnu.edu.vn', '$2y$10$XBJYnt47mQ1xoQCZwwJUSO1Px1agI9NogglRYepw5W/oALHvUM8xO', 1463133964, '', '0000-00-00', '1463133965', '', 0, 'TBUtMiiTaT', '', NULL, NULL, '2016-05-13 03:06:04', '2016-05-13 03:06:04');
 
 --
@@ -667,6 +707,12 @@ ALTER TABLE `instructions`
 --
 ALTER TABLE `news`
   ADD PRIMARY KEY (`id`), ADD KEY `news_schoolyear_id_foreign` (`schoolyear_id`);
+
+--
+-- Indexes for table `notifications`
+--
+ALTER TABLE `notifications`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `notification_admins`
@@ -770,7 +816,7 @@ ALTER TABLE `admin_configurations`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `companies`
 --
@@ -802,10 +848,15 @@ ALTER TABLE `instructions`
 ALTER TABLE `news`
   MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
+-- AUTO_INCREMENT for table `notifications`
+--
+ALTER TABLE `notifications`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
 -- AUTO_INCREMENT for table `notification_admins`
 --
 ALTER TABLE `notification_admins`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `notify_teacher_acceptances`
 --
@@ -840,7 +891,7 @@ ALTER TABLE `slides`
 -- AUTO_INCREMENT for table `statuses`
 --
 ALTER TABLE `statuses`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=140;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=156;
 --
 -- AUTO_INCREMENT for table `student_notifications`
 --

@@ -129,8 +129,13 @@ class TeacherAuthController extends Controller {
     	}
 
     	//Else
+        $email = Request::get('email');
+        if(!strpos($email, '@'))
+        {
+            $email = $email.'@vnu.edu.vn';
+        }
     	$credentials =  [
-    		'email' => Request::get('email').'@vnu.edu.vn',
+    		'email' => $email,
     		'password' => Request::get('password'),
     		'confirmed'=> 1
     	];

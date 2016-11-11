@@ -162,6 +162,19 @@ Route::group(['middleware' => 'web'], function () {
         });
         
         /**
+         * Company infomation 
+         */
+        Route::group(['prefix'=>'/doanh-nghiep'],function(){
+            Route::get('/',[
+                'as'    => 'student.company.list',
+                'uses'  => 'CompanyController@listAll'
+            ]);
+            Route::get('/{company_id}',[
+                'as'    => 'student.company.detail',
+                'uses'  => 'CompanyController@detail'
+            ]);
+        });
+        /**
          * Register company you want to intern
          */
         Route::get('/{id}/dang-ki-thuc-tap',[
@@ -228,6 +241,7 @@ Route::group(['middleware' => 'web'], function () {
 
        });
 
+       
        /**
          * Feedback
          */
@@ -353,7 +367,27 @@ Route::group(['middleware' => 'web'], function () {
                 'uses'  => 'ConfigurationController@save'
             ]);
         });
-
+        /**
+        * Notification management
+        */
+       Route::group(['prefix'=>'notification'],function(){
+            Route::get('/',[
+                'as'    => 'admin.notification.index',
+                'uses'  => 'NotificationController@index'
+            ]);
+            Route::post('/add',[
+                'as'    => 'admin.notification.add',
+                'uses'  => 'NotificationController@add'
+            ]);
+            Route::post('/{id}/edit',[
+                'as'    => 'admin.notification.edit',
+                'uses'  => 'NotificationController@edit'
+            ]);
+            Route::post('/{id}/delete',[
+                'as'    => 'admin.notification.delete',
+                'uses'  => 'NotificationController@delete'
+            ]);
+       });
 
         /**
          * Feedback management
@@ -580,7 +614,20 @@ Route::group(['middleware' => 'web'], function () {
                 'uses'  => 'NewsController@detail'
             ]);
        });
-
+       
+       /**
+        * Company process
+        */
+        Route::group(['prefix'=>'/doanh-nghiep'],function(){
+            Route::get('/',[
+                'as'    => 'teacher.company.list',
+                'uses'  => 'CompanyController@listAll'
+            ]);
+            Route::get('/{company_id}',[
+                'as'    => 'teacher.company.detail',
+                'uses'  => 'CompanyController@detail'
+            ]);
+        });
        /**
         * List student involved
         */

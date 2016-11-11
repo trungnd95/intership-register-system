@@ -92,7 +92,7 @@ class ReportController extends Controller
  				$teacher =  Teacher::find($guard_id);
  				$username = $teacher->username;
  				$role = 'teacher';
- 				$avatar_src =  asset('/images/teachers/tutor_login_icon.png');
+ 				$avatar_src =  asset('/images/tutor_login_icon.png');
  			}
  			else {
  				$student = User::find($guard_id);

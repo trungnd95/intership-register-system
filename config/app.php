@@ -12,7 +12,7 @@ return [
     | services your application utilizes. Set this in your ".env" file.
     |
     */
-
+    'allowImageFiles'  => ['jpg','png','gif'],
     'env' => env('APP_ENV', 'production'),
 
     /*
@@ -157,9 +157,9 @@ return [
         App\Providers\RouteServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         Kryptonit3\Pusher\PusherServiceProvider::class,
-        Barryvdh\Snappy\ServiceProvider::class,
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
-        Chencha\Share\ShareServiceProvider::class ,
+        Chencha\Share\ShareServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
     ],
 
     /*
@@ -206,10 +206,10 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
-        'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
-        'Image' => Barryvdh\Snappy\Facades\SnappyImage::class,
         'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
         'Share' => Chencha\Share\ShareFacade::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
+
     ],
 
 ];

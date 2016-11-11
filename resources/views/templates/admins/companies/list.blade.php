@@ -13,7 +13,7 @@
 			<div class="box-body table-responsive no-padding">
 				<form action="" method="POST" class="form-horizontal" role="form" id="form-index-company">
 					{!! csrf_field() !!}
-					<table class="table table-hover text-center" id="dataTable">
+					<table class="table table-hover text-center" id="dataTableCompany">
 						<thead>
 							<tr>
 								<th>STT</th>

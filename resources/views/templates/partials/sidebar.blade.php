@@ -21,10 +21,11 @@
 
 							?>
 							<li  class="menu-item menu-item-type-taxonomy menu-item-object-category current-menu-item"><a href="{{$href}}" target="{{$target}}">Sơ yếu lí lịch</a></li>
-							<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="{{route('student.news.index')}}">Tin tuyển dụng</a></li>
+							<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="{{route('student.company.list')}}">Thông tin doanh nghiệp</a></li>
 							<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="{{route('student.regis.index',[Auth::user()->id])}}">Đăng kí thực tập</a></li>
-							<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="{{route('student.report.index',[Auth::user()->id])}}">Báo cáo</a></li>
 							<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="{{route('student.status.indentify',[Auth::user()->id])}}">Tình trạng đăng kí</a></li>
+							<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="{{route('student.report.index',[Auth::user()->id])}}">Báo cáo</a></li>
+							
 							{{-- <li><a href="{{route('student.changePassword.getView',Auth::user()->id)}}">Đổi mật khẩu</a></li>
 							<li style="width: 150px"><hr/></li> --}}
 						</ul>

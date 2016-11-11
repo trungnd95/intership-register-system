@@ -56,6 +56,7 @@ class RegisController extends Controller
      */
     public function store($id)
     {
+        $status = Status::where('user_id','=',$id)->delete();
     	$registered_arr = Request::get('items');
         // return $registered_arr;
         foreach($registered_arr as $item)
@@ -65,14 +66,14 @@ class RegisController extends Controller
             $status->company_id = $item;
             $status->acceptance = "pending";
             $status->save();
-            $company =  Company::find($status->company_id);
-            $notifycationAdmin = new NotificationAdmin;
-            $notifycationAdmin->user_id = $status->user_id;
-            $notifycationAdmin->company_id = $status->company_id;
-            $notifycationAdmin->message   = Auth::user()->user_name.' vừa đăng kí thực tập tại công ty '.$company->name;
-            $notifycationAdmin->seen      = 0;
-            $notifycationAdmin->save();
-            event(new NotifyAdmin($notifycationAdmin));
+            // $company =  Company::find($status->company_id);
+            // $notifycationAdmin = new NotificationAdmin;
+            // $notifycationAdmin->user_id = $status->user_id;
+            // $notifycationAdmin->company_id = $status->company_id;
+            // $notifycationAdmin->message   = Auth::user()->user_name.' vừa đăng kí thực tập tại công ty '.$company->name;
+            // $notifycationAdmin->seen      = 0;
+            // $notifycationAdmin->save();
+            // event(new NotifyAdmin($notifycationAdmin));
             
         }
         

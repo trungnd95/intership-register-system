@@ -25,19 +25,19 @@ Breadcrumbs::register('update-profile', function($breadcrumbs)
 Breadcrumbs::register('create-cv', function($breadcrumbs)
 {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push('Tạo CV', route('student.cv.init',Auth::user()->id));
+    $breadcrumbs->push('Sơ yếu lí lịch', route('student.cv.init',Auth::user()->id));
 });
  
 Breadcrumbs::register('create-cv', function($breadcrumbs)
 {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push('Tạo CV', route('student.cv.create',Auth::user()->id));
+    $breadcrumbs->push('Sơ yếu lí lịch', route('student.cv.create',Auth::user()->id));
 });
 
 Breadcrumbs::register('update-cv', function($breadcrumbs)
 {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push('Cập nhật CV', route('student.cv.edit',Auth::user()->id));
+    $breadcrumbs->push('Cập nhật Cv', route('student.cv.edit',Auth::user()->id));
 });
  
  Breadcrumbs::register('notification', function($breadcrumbs)
@@ -79,13 +79,13 @@ Breadcrumbs::register('update-cv', function($breadcrumbs)
 Breadcrumbs::register('new', function($breadcrumbs)
 {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push('Tin tức ', route('student.news.index'));
+    $breadcrumbs->push('Doanh nghiệp ', route('student.company.list'));
 });
 
-Breadcrumbs::register('new_detail', function($breadcrumbs ,$new)
+Breadcrumbs::register('new_detail', function($breadcrumbs ,$company)
 {
     $breadcrumbs->parent('new');
-    $breadcrumbs->push($new->title, route('student.news.detail',$new->slug));
+    $breadcrumbs->push($company->name, route('student.company.detail',$company->id));
 });
 
   Breadcrumbs::register('feedback', function($breadcrumbs)
@@ -131,16 +131,16 @@ Breadcrumbs::register('profile_teacher_update', function($breadcrumbs)
     $breadcrumbs->push('Cập nhật thông tin ', route('teacher.profile.edit',Auth::guard('teachers')->user()->id));
 });
 
-Breadcrumbs::register('new_teacher', function($breadcrumbs)
+Breadcrumbs::register('company_teacher', function($breadcrumbs)
 {
     $breadcrumbs->parent('home_teacher');
-    $breadcrumbs->push('Tin tức', route('teacher.news.index'));
+    $breadcrumbs->push('Doanh nghiệp', route('teacher.company.list'));
 });
 
-Breadcrumbs::register('new_detail_teacher', function($breadcrumbs,$new)
+Breadcrumbs::register('compnay_detail_teacher', function($breadcrumbs,$company)
 {
-    $breadcrumbs->parent('new_teacher');
-    $breadcrumbs->push($new->title, route('teacher.news.detail',$new->slug));
+    $breadcrumbs->parent('company_teacher');
+    $breadcrumbs->push($company->name, route('teacher.company.detail',$company->id));
 });
 
 Breadcrumbs::register('list_student', function($breadcrumbs)
@@ -149,10 +149,10 @@ Breadcrumbs::register('list_student', function($breadcrumbs)
     $breadcrumbs->push('Danh sách sinh viên hướng dẫn', route('teacher.students.list',Auth::guard('teachers')->user()->id));
 });
 
-Breadcrumbs::register('student_specify', function($breadcrumbs,$student)
+Breadcrumbs::register('student_specify', function($breadcrumbs,$cv)
 {
     $breadcrumbs->parent('home_teacher');
-    $breadcrumbs->push('Sinh viên '.$student->full_name, route('teacher.student.cvView',$student->id));
+    $breadcrumbs->push('Sinh viên '.$cv->name, route('teacher.student.cvView',$cv->user_id));
 });
 
 Breadcrumbs::register('student_report', function($breadcrumbs,$student)

@@ -12,11 +12,12 @@
 			<div class="box-body table-responsive no-padding">
 				<form action="" method="POST" class="form-horizontal" role="form" id="form-index-student-list">
 					{!! csrf_field() !!}
-					<table class="table table-hover text-center" id="dataTable">
+					<table class="table table-hover text-center" id="dataTableStudent">
 						<thead>
 							<tr>
 								<th>STT</th>
-								<th>Tên/Username</th>
+								<th>Tên</th>
+								<th>Username</th>
 								<th>Lớp khóa học</th>
 								<th>MSV</th>
 								{{-- <th>CV</th> --}}
@@ -34,22 +35,19 @@
 								<td>
 									@if(count($student->cv) > 0)
 										{{ $student->cv->name}}
-									@else 
-										{{ $student->user_name }}
+									
+									
 									@endif
 								</td>
+								<td>{{ $student->user_name }}</td>
 								<td>
 									@if(count($student->cv) > 0 )
 										{{ $student->cv->class }}
-									@else 
-										Chưa cập nhật CV
 									@endif
 								</td>
 								<td>
 									@if(count($student->cv) > 0)
 										{{ $student->cv->student_code}}
-									@else 
-										Chưa cập nhật CV
 									@endif
 								</td>
 								{{-- <td><a href="{{ route('student.cv.view',[$student->id]) }}" target="_blank">Xem CV</a></td> --}}

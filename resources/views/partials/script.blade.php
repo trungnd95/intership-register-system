@@ -36,7 +36,7 @@
 <script src="{{ url('/js/admin.js') }}"></script>
 <script src="{{ url('/js/teacher-notify.js') }}"></script>
 <script src="{{ url('/js/student-notify.js') }}"></script>
-<script src="{{ url('/js/schoolyear.js') }}"></script>
+<script src="{{ url('/js/notification.js') }}"></script>
 <script src="{{ url('/js/feedback.js') }}"></script>
 <script src="{{ url('/js/countdown.js') }}"></script>
  <!-- JQuery UI Script -->

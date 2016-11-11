@@ -3,7 +3,7 @@
 @if(Auth::guard('teachers')->getUser() == null)
 	@section('breadcrumbs',Breadcrumbs::render('report'))
 @else 
-	@section('breadcrumbs_teacher',Breadcrumbs::render('student_report',$student))
+	@section('breadcrumbs_teacher',Breadcrumbs::render('student_report',\App\Cv::where('user_id','=',$student->id)->first()))
 @endif
 @section('templates.body.content')
 	<div class="report box">
@@ -50,7 +50,7 @@
 				 							$cv =  App\Cv::where('user_id','=',$id)->first();
 				 						}
 				 					?>
-				 					<img src="{{ (Auth::guard('teachers')->getUser() != null) ? asset('/images/tutor_login_icon.png') : (count($cv) > 0 && $cv->image != '') ? asset('/upload/images/students/'.$cv->image) : asset('/images/Student-icon.png')  }}" alt="" class="thumnail current_user" width="50px" height="50px">
+				 					<img src="{{ (Auth::guard('teachers')->getUser() != null) ? asset('/images/tutor_login_icon.png') : ((count($cv) > 0 && $cv->image != '') ? asset('/upload/images/students/'.$cv->image) : asset('/images/Student-icon.png') ) }}" alt="" class="thumnail current_user" width="50px" height="50px">
 				 				</div>
 				 				<form  method="POST" action="#" class="form-horizontal comment-report" role="form" >
 				 					{{csrf_field()}}

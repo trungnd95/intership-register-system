@@ -1,6 +1,10 @@
 @extends('templates.layouts.master')
 @section('head.title','Chi tiết công ty')
-@section('breadcrumbs',Breadcrumbs::render('company-detail',$company))
+@if(Auth::guard('teachers')->getUser() == null) 
+	@section('breadcrumbs',Breadcrumbs::render('new_detail',$company))
+@else 
+	@section('breadcrumbs_teacher',Breadcrumbs::render('compnay_detail_teacher',$company))
+@endif
 @section('templates.body.content')
 	<div class="company_detail">
 		<div class="box">
@@ -65,6 +69,11 @@
 						</td>
 					</tr>
 				</table>
+			</div>
+			<div class="clearfix"></div>
+			<hr/>
+			<div class="back">
+				<a href="#" onclick="goBack()"><i class="fa fa-arrow-left fa-2x" aria-hidden="true" style="margin-right: 10px"></i>Quay lại</a>
 			</div>
 		</div>
 	</div>

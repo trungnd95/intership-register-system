@@ -10,12 +10,13 @@ use DB;
 use Validator;
 use Request;
 use Alert;
+use Auth; 
 class CompanyController extends Controller
 {
-    public function __construct()
-    {
-    	$this->middleware('admins');
-    }
+    // public function __construct()
+    // {
+    // 	$this->middleware('admins');
+    // }
 
     /**
      * List all company 
@@ -48,14 +49,14 @@ class CompanyController extends Controller
     		'name'			=> 'required',
     		'address'		=> 'required',
     		'contact'		=> 'required',
-    		'description'	=> 'required',
+    		'short_description'	=> 'required',
     		'services'		=> 'required',
     		'recruitment_amount'=> 'required'
     	],[
     		'name.required'	=> 'Đây là trường bắt buộc',
     		'address.required'	=> 'Đây là trường bắt buộc',
     		'contact.required'	=> 'Đây là trường bắt buộc',
-    		'description.required'	=> 'Đây là trường bắt buộc',
+    		'short_description.required'	=> 'Đây là trường bắt buộc',
     		'services.required'	=> 'Đây là trường bắt buộc',
     		'recruitment_amount.required'	=> 'Đây là trường bắt buộc',
 
@@ -70,7 +71,7 @@ class CompanyController extends Controller
     		'name'			=> Request::get('name'),
     		'address'		=> Request::get('address'),
     		'contact'		=> Request::get('contact'),
-    		'description'	=> Request::get('description'),
+    		'description'	=> Request::get('short_description'),
     		'services'		=> Request::get('services'),
     		'recruitment_amount'=> Request::get('recruitment_amount'),
     	]);
@@ -113,14 +114,14 @@ class CompanyController extends Controller
     		'name'			=> 'required',
     		'address'		=> 'required',
     		'contact'		=> 'required',
-    		'description'	=> 'required',
+    		'short_description'	=> 'required',
     		'services'		=> 'required',
     		'recruitment_amount'=> 'required'
     	],[
     		'name.required'	=> 'Đây là trường bắt buộc',
     		'address.required'	=> 'Đây là trường bắt buộc',
     		'contact.required'	=> 'Đây là trường bắt buộc',
-    		'description.required'	=> 'Đây là trường bắt buộc',
+    		'short_description.required'	=> 'Đây là trường bắt buộc',
     		'services.required'	=> 'Đây là trường bắt buộc',
     		'recruitment_amount.required'	=> 'Đây là trường bắt buộc',
 
@@ -136,11 +137,34 @@ class CompanyController extends Controller
     		'name'			=> Request::get('name'),
     		'address'		=> Request::get('address'),
     		'contact'		=> Request::get('contact'),
-    		'description'	=> Request::get('description'),
+    		'description'	=> Request::get('short_description'),
     		'services'		=> Request::get('services'),
     		'recruitment_amount'=> Request::get('recruitment_amount'),
     	]);
     	Alert::success('Đã chỉnh sửa')->persistent('Đóng');
     	return redirect()->route('admin.companies.index');	
+    }
+
+    /**
+     * [listAll description]
+     * @return [type] [description]
+     */
+    public function listAll()
+    {
+        $companies = Company::paginate(10);
+        if(Auth::guard('teachers')->getUser() == null)
+        {
+            return view('templates.students.news.list',compact('companies'));    
+        }
+        else {
+            return view('templates.teachers.news.list',compact('companies'));    
+        }
+        
+    }    
+
+    public function detail($company_id)
+    {   
+        $company = Company::with(['statuses'])->where('id','=',$company_id)->first();
+        return view('templates.students.registers.companyDetail',compact('company'));        
     }
 }

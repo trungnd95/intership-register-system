@@ -8,7 +8,7 @@
 @section('templates.body.content')
 <div class="box">
 	<div class="box-header">
-		<h3 class="text-center">Ý kiến phản hồi</h3>
+		<h2 class="text-center title-header">Ý kiến phản hồi</h2>
 		<br/><hr/>
 	</div>
 	<div class="box-body">
@@ -45,8 +45,9 @@
 			</div>
 			<div class="form-group">
 				<div class="col-sm-10 col-sm-offset-2">
-					<button type="submit" class="btn btn-primary" style="width:49%">Gửi</button>
+					
 					<button type="reset" class="btn btn-warning" style="width:49%">Reset</button>
+					<button type="submit" class="btn btn-primary" style="width:49%">Gửi</button>
 				</div>
 			</div>
 		</form>

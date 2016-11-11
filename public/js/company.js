@@ -17,7 +17,7 @@ $(document).ready(function(){
 			cache:false,
 			data: {'company_id':company_id,'_token':_token},
 			success: function(result){
-					$('.btn-delete-new-' + result).parent().parent().hide();
+					$('.btn-delete-company-' + result).parent().parent().hide();
 					swal('Xóa thành công','','success');
 			}
 		});

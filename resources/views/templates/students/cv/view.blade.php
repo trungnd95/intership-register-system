@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 @include('partials.head')
+<page>
 <body id="top">
 @if(count($cv->cv) > 0)
 <div id="cv" class="instaFade">
@@ -15,21 +16,24 @@
 		
 		<div id="contactDetails" class="quickFade delayFour">
 			<ul>
+				<li class="pull-right" style="margin-left: 10px"><a href="{{route('export.pdf',[$cv->id])}}" class="btn btn-default " target="_blank">Export PDF</a></li>
 				@if($cv->id ==  Auth::user()->id)
-					<li><a href="{{route('student.cv.edit',$cv->id)}}">Sửa</a></li>
+					<li class="pull-right"><a class="btn btn-warning" href="{{route('student.cv.edit',$cv->id)}}">Sửa</a></li>
+					{{-- <li class="clearfix"></li> --}}
 				@endif
-				<li><a href="{{route('export.pdf',[$cv->id])}}" target="_blank">Export PDF</a></li>
-				<li><a title="print cv" alt="print cv" onclick="window.print()" target="_blank" style="cursor:pointer;margin-left: 80%"><i class="fa fa-print fa-2x"></i>
-				</a></li>
-				<li>e: <a href="mailto:{{$cv->cv->email}}" target="_blank">{!! $cv->cv->email !!}</a></li>
+				
+				<li class="clearfix"></li>
+				{{-- <li><a title="print cv" alt="print cv" onclick="window.print()" target="_blank" style="cursor:pointer;margin-left: 80%"><i class="fa fa-print fa-2x"></i>
+				</a></li> --}}
+				<li>Email: <a href="mailto:{{$cv->cv->email}}" target="_blank">{!! $cv->cv->email !!}</a></li>
 				@if($cv->cv->email1 != null)
-					<li>e2: <a href="mailto:{{$cv->cv->email1}}" target="_blank">{!! $cv->cv->email1 !!}</a></li>
+					<li>Email2: <a href="mailto:{{$cv->cv->email1}}" target="_blank">{!! $cv->cv->email1 !!}</a></li>
 				@endif
 				@if($cv->cv->personal_website != null)
-				<li>w: <a href="{{$cv->cv->personal_website}}">{!! $cv->cv->personal_website !!}</a></li>
+				<li>Website: <a href="{{$cv->cv->personal_website}}">{!! $cv->cv->personal_website !!}</a></li>
 				@endif
-				<li>m: {!! $cv->cv->phone_number !!}</li>
-				<li>Ad: {!! $cv->cv->address !!}</li>
+				<li>Mobile: {!! $cv->cv->phone_number !!}</li>
+				<li>Địa chỉ: {!! $cv->cv->address !!}</li>
 			</ul>
 		</div>
 		<div class="clear"></div>
@@ -39,11 +43,15 @@
 		<section>
 			<article>
 				<div class="sectionTitle">
-					<h1>Giới thiệu ngắn</h1>
+					<h1>Ngày sinh </h1>
 				</div>
 				
 				<div class="sectionContent">
-					<p>{!! nl2br($cv->cv->short_selfintro) !!}</p>
+					<?php $date=date_create($cv->cv->date_of_birth);?>
+					<p>{!!
+						
+						date_format($date,"d/m/Y");
+						!!}</p>
 				</div>
 			</article>
 			<div class="clear"></div>
@@ -73,8 +81,21 @@
 			<div class="clear"></div>
 		</section>
 		<section>
+			<article>
+				<div class="sectionTitle">
+					<h1>Điểm trung bình tích lũy</h1>
+				</div>
+				
+				<div class="sectionContent">
+					<p>{!! nl2br($cv->cv->mark_average) !!}</p>
+				</div>
+			</article>
+			<div class="clear"></div>
+		</section>
+		@if($cv->cv->education)
+		<section>
 			<div class="sectionTitle">
-				<h1>Quá trình học tập</h1>
+				<h1>Thành tích trong quá trình học tập</h1>
 			</div>
 			
 			<div class="sectionContent">
@@ -82,7 +103,7 @@
 			</div>
 			<div class="clear"></div>
 		</section>
-		
+		@endif
 		
 		<section>
 			<div class="sectionTitle">
@@ -91,18 +112,6 @@
 			
 			<div class="sectionContent">
 				{!!  nl2br($cv->cv->skills) !!}
-			</div>
-			<div class="clear"></div>
-		</section>
-		
-		
-		<section>
-			<div class="sectionTitle">
-				<h1>Công nghệ đã dùng</h1>
-			</div>
-			
-			<div class="sectionContent">
-				{!! nl2br($cv->cv->technical) !!}
 			</div>
 			<div class="clear"></div>
 		</section>
@@ -142,6 +151,13 @@
 				<div class="clear"></div>
 			</section>
 		@endif
+		@if(Auth::guard('teachers')->getUser() == null && Auth::guard('admins')->getUser() == null)
+			<section class="sectionContent">
+				{{-- <div class="sectionTitle"> --}}
+					<a href="{{route('student.index')}}" class="btn btn-primary"><i class="fa fa-2x fa-arrow-left" aria-hidden="true" style="margin-right:10px"></i>Trang chủ</a>	
+				{{-- </div> --}}
+			</section>
+		@endif
 	</div>
 </div>
 @else
@@ -160,4 +176,5 @@ pageTracker._trackPageview();
 </script>
 @include('partials.script')
 </body>
+</page>
 </html>

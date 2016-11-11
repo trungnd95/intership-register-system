@@ -3,16 +3,56 @@
  * =================================
  */
 $(document).ready(function(){
+  //Add checkbox checked value form athor page when submit at current page
+  $("#form_list_company").on('submit', function(e){
+    var table = $('#dataTable').DataTable({
+      retrieve: true,
+      paging: false
+    });
+   var $form = $(this);
+
+   // Iterate over all checkboxes in the table
+   table.$('input[type="checkbox"]:checked').each(function(){
+      // If checkbox doesn't exist in DOM
+      if(!$.contains(document, this)){
+         // If checkbox is checked
+         if(this.checked){
+            // Create a hidden element 
+            $form.append(
+             $('<input>')
+             .attr('type', 'hidden')
+             .attr('name', this.name)
+             .val(this.value)
+             );
+          }
+        } 
+      });          
+ });
 	$('.registered_button').on('click',function(e){
 		e.preventDefault();
-		var numberChoose = $('input.company_registered:checked').length;
-		// console.log(numberChoose);
-		if(numberChoose == 0)
+		// var numberChoose = $('.student-register-index').find($('input.company_registered:checked')).length;
+    // $('input.company_registered:checked').each(function(){
+    //   console.log($(this).attr('company-name'));
+    // });
+    var datatable = $('.student-register-index').dataTable();
+    var dtNodes = datatable.$("input[type='checkbox']:checked");
+    var companies =  [];
+    dtNodes.each(function(){
+      companies.push($(this).attr('company-name'));
+    });
+    var max_company =  $(this).attr('max-company');
+    if(dtNodes.length > max_company)
+    {
+      $('#errorsRegisModal').modal('show');
+      $('#errorsRegisModal').find('.modal-body').find('.number_company_registered').text("Trong lần đăng kí này bạn đã lựa chọn " + dtNodes.length + " công ty. Đó là : " + companies.toString());
+      $('#errorsRegisModal').find('.modal-body').find('.max-company-register').text(max_company);
+
+    }else if(dtNodes.length == 0)
 		{
 			$('#modalError').modal('show');
 		}else {
 			$('#myConfirmRegister').modal('show');
-			$('#myConfirmRegister').find('.modal-body').find('.number_company_register').text("Bạn đã lựa chọn " + numberChoose + " công ty");
+			$('#myConfirmRegister').find('.modal-body').find('.number_company_register').text("Trong lần đăng kí này bạn đã lựa chọn " + dtNodes.length + " công ty. Đó là : " + companies.toString());
 		}
     return false;
 	});
@@ -118,12 +158,18 @@ $(document).ready(function(){
 
   // Click reset checked register
   $('.reset_register_button').on('click',function(){
-      $('.student-register-index').find('tbody').find("input[type='checkbox']").each(function(){
-          if($(this)[0].checked == true )
-          {
-              $(this)[0].checked = false; 
-          }
-      });
+    var datatable = $('.student-register-index').dataTable();
+    var dtNodes = datatable.$("input[type='checkbox']:checked");
+    var companies =  [];
+    dtNodes.each(function(){
+        $(this).removeAttr('checked');
+    });
+      // $('.student-register-index').find('tbody').find("input[type='checkbox']").each(function(){
+      //     if($(this)[0].checked == true )
+      //     {
+      //         $(this)[0].checked = false; 
+      //     }
+      // });
       return false;
       
   });

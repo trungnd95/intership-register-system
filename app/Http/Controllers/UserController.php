@@ -140,7 +140,7 @@ class UserController extends Controller
      */
     public function listStudents($teacher_id)
     {
-        $allStudents = User::where('teacher_id','=',$teacher_id)->get();
+        $allStudents = User::with(['cv'])->where('teacher_id','=',$teacher_id)->get();
         return view('templates.teachers.listStudents.allStudents',compact('allStudents'));
     }
 

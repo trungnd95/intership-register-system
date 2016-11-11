@@ -19,7 +19,7 @@
 			<div class="box-body">
 				<div class="row">
 					<div class="col-lg-12" id="search_display">
-						<table id="dataTable" class="table table-bordered table-striped student-status-index">
+						<table id="dataTableStatusStudent" class="table table-bordered table-striped student-status-index">
 							<thead>
 								<tr class="text-center">
 									<th width="60px" class="text-center">Chọn</th>
@@ -35,7 +35,7 @@
 									<td>
 										<label>
 										@if($item->acceptance == "success")
-											<input type="checkbox" class="company_confirm" value="{{$item->company->id}}" name="company_confirm" 
+											<input type="radio" class="company_confirm" value="{{$item->company->id}}" style="width:15px;height: 15px" name="company_confirm" 
 											@if($item->choosen == 1)
 												checked
 											@endif
@@ -93,7 +93,7 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title">Xác nhận</h4>
+							<h3 class="modal-title title-header">Xác nhận</h3>
 						</div>
 						<div class="modal-body">
 							<p> Bạn có chắc chắn đăng kí công ty vừa chọn !</p>
@@ -112,7 +112,7 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title">Xác nhận</h4>
+							<h3 class="modal-title title-header">Xác nhận</h3>
 						</div>
 						<div class="modal-body">
 							<p class="number_company_register"></p>
@@ -132,7 +132,7 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title text-center"></h4>
+						<h3 class="modal-title text-center title-header"></h3>
 					</div>
 					<div class="modal-body">
 						<div class="table-responsive">
@@ -168,7 +168,7 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title">Thông báo</h4>
+						<h3 class="modal-title title-header">Thông báo</h3>
 					</div>
 					<div class="modal-body">
 						<p>

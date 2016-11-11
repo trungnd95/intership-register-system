@@ -14,11 +14,12 @@
 			<div class="box-body table-responsive no-padding">
 				<form action="" method="POST" class="form-horizontal" role="form" id="form-index-status">
 					{!! csrf_field() !!}
-					<table class="table table-hover text-center table-status" id="dataTable">
+					<table class="table table-hover text-center table-status" id="dataTableStatusAdmin">
 						<thead>
 							<tr>
 								<th>STT</th>
-								<th>Tên/Username</th>
+								<th>Tên</th>
+								<th>Username</th>
 								<th>Lớp khóa học</th>
 								<th>MSV</th>
 								<th>CV</th>
@@ -26,7 +27,7 @@
 								<th>Tình trạng</th>
 								{{--<th>Giảng viên hướng dẫn</th>--}}
 								{{--<th>Tình trạng</th>--}}
-								<th>Tình trạng liên hệ vs cty</th>
+								{{-- <th>Tình trạng liên hệ vs cty</th> --}}
 							</tr>	
 						</thead>
 						<tbody>
@@ -38,10 +39,10 @@
 									<td>
 										@if(count($student->cv) > 0)
 											{{$student->cv->name}}
-										@else
-											{{ $student->user_name}}
+											
 										@endif
 									</td>
+									<td>{{ $student->user_name}}</td>
 									<td>
 										@if(count($student->cv) > 0)
 											{{ $student->cv->class}}
@@ -108,7 +109,7 @@
 											{{--Không được chấp nhận--}}
 										{{--@endif--}}
 									{{--</td>--}}
-									<td>
+									{{-- <td>
 										<div class="contact-{{$item->id}}">
 											@if($item->contacted == 1)
 												Đã liên hệ
@@ -128,7 +129,7 @@
 											<input type="hidden" name="" value="{{$item->id}}" class="status_id">
 										</div>
 										
-									</td>
+									</td> --}}
 								</tr>
 								<?php $stt ++ ;?>
 								@endforeach

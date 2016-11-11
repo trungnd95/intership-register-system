@@ -107,8 +107,8 @@ section:last-child {
 }
 
 .sectionContent {
-	float: right;
-	width: 72.5%;
+	/*float: right;*/
+	/*width: 72.5%;*/
 }
 
 .sectionTitle h1 {

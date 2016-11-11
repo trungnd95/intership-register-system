@@ -6,14 +6,14 @@
 /**
  * header style
  */
-header.admin-header {
+/*header.admin-header {
 	height: 40px;
 }
-
+*/
 header.admin-header h3 {
 	color: #fff;
 	text-transform:uppercase;
-	line-height: 40px;
+	/*line-height: 40px;*/
 	font-family: "Great Vibes", cursive;
 	text-shadow: 0 2px 6px rgba(0,0,0,.5);
 }
@@ -33,9 +33,9 @@ header.admin-header .logo {
 /**
  * Sidebar 
  */
-aside.main-sidebar .sidebar-menu {
+/*aside.main-sidebar .sidebar-menu {
 	margin-top: 70px;
-}
+}*/
 
 aside.main-sidebar .header {
 	font-size: 15px;
@@ -47,14 +47,20 @@ aside.main-sidebar .header {
  * Content
  */
 
-div.content-wrapper {
+/*div.content-wrapper {
 	margin-top: 92px;
-}
+}*/
 
-.content-header {
+/*.content-header {
 	margin-bottom: 20px;
 }
-
+*/
+section.content-header {
+	padding-bottom: 20px;
+}
+.navbar {
+	margin-bottom: 0px !important;
+}
 div.data-content tr.row-content td:last-child {
 	width: 20%;
 }
@@ -67,9 +73,9 @@ div.data-content .row_slide {
 	margin-left: 30px;
 }
 
-nav {
+/*nav {
 	height: 150px;
-}
+}*/
 /*===============================
 ============ Notify style =======
 =================================*/
@@ -79,7 +85,7 @@ nav {
 float: left;
 margin-right: 15px;
 font-size: 14px;
-margin-top: 14%;
+/*margin-top: 14%;*/
 /*font-weight:bold;*/
 }
 #nav li a{color:#333333;text-decoration:none}

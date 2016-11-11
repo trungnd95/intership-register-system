@@ -21,7 +21,7 @@
             <form method="post" method="{{ url('/login') }}">
                 {!! csrf_field() !!}
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} has-feedback">
-                    <input type="text" class="form-control" placeholder="Tên Email" name="email" value="{{ old('email') }}" >
+                    <input type="text" class="form-control" placeholder="VNU Email" name="email" value="{{ old('email') }}" >
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                     @if ($errors->has('email'))
                     <span class="help-block">
@@ -87,7 +87,7 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-8">
-                                    <input id="email" name="email" type="text" placeholder="Nhập tên email" class="form-control input-md" style="width: 100%;display: inline-block">         
+                                    <input id="email" name="email" type="text"  class="form-control input-md" style="width: 100%;display: inline-block">         
                                 </div>
                                 <div class="col-md-4">
                                     <span class="text-primary email-standard" > @vnu.edu.vn</span>        
@@ -97,7 +97,7 @@
                         </div>
                         <div class="col-md-4">
                             <p class="text-danger text-inline">
-                                <span>(Sử dụng email vnu của bạn. <br/> VD: Email : abcd@vnu.edu.vn => Nhập : abcd)</span>
+                                <span>(Sử dụng email VNU của bạn. <br/> VD: Email : abcd@vnu.edu.vn => Nhập : abcd)</span>
                             </p>
                         </div>
                     </div>
@@ -106,14 +106,14 @@
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="password">Mật khẩu</label>  
                         <div class="col-md-6">
-                            <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control input-md">
+                            <input id="password" name="password" type="password"  class="form-control input-md">
                         </div>
                     </div>
                     <!-- Confirm Password -->
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="repassword">Xác nhận mật khẩu</label>  
                         <div class="col-md-6">
-                            <input id="repassword" name="repassword" type="password" equalTo="#password" placeholder="Xác nhận mật khẩu" class="form-control input-md">
+                            <input id="repassword" name="repassword" type="password" equalTo="#password"  class="form-control input-md">
                         </div>
                     </div>
             </div>

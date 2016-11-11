@@ -1,5 +1,5 @@
 @extends('templates.layouts.master')
-@section('head.title','Tin tức tuyển dụng')
+@section('head.title','Đăng kí thực tập')
 @section('breadcrumbs',Breadcrumbs::render('register'))
 @section('templates.body.content')
 <section class="content-register ">
@@ -24,15 +24,6 @@
 			@endif
 		</div>
 	</div>
-	<?php 
-	$count_regis = 0;
-	?>
-	@foreach($companies as $company)
-	@if(count($company->statuses ) > 0)
-	<?php $count_regis ++ ;?>
-	@endif
-	@endforeach
-	
 	<!-- Count down to time register-->
 	
 	<?php 
@@ -62,7 +53,6 @@
 	?>
 	{{-- Check if registerd compnies ==  max_register ==> not allow continute register --}}
 	<div class="show_register {{($date < $time_start) ? 'hidden' : ''}}">
-		@if($count_regis < $max_register->max_register)
 		<div class="box">
 			
 			<div class="box-header">
@@ -76,7 +66,25 @@
 				<form method="POST" action="{{route('student.regis.store',[Auth::user()->id])}}" id="form_list_company">
 
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
-				<div class="box-body">
+				<div class="box-body box-body-register-index">
+					<div class="show-temp-result">
+						<?php 
+							$statuses = App\Status::with('company')->where('user_id','=',Auth::user()->id)->get();
+
+						?>
+						@if(count($statuses) > 0)
+							<h4 class="inline">Trong lần đăng kí trước bạn đã đăng kí các công ty :</h4> 
+							<div class="show_company_temp_choosen inline">
+								@foreach($statuses as $item) 
+									<strong style="font-size: 18px;color:#27875f" class='company_temp_registered'> {{ $item->company->name }}</strong>;
+								@endforeach	
+							</div>
+							<br/>
+							<p>(Nếu muốn thay đổi, bạn có thể tùy chỉnh bằng cách tích vào ô chọn hoặc bỏ đi)</p>
+						@else 
+							<p>Bạn chưa đăng kí công ty nào !</p>
+						@endif
+					</div><hr/>
 					{{-- <div class="row" style="margin-bottom: 5px;">
 						<div class="col-lg-2">
 						</div>
@@ -108,9 +116,9 @@
 								<tbody>
 									@foreach($companies as  $company)
 										<tr class="text-center">
-											<td><input type="checkbox" class="company_registered" value="{{ $company->id}}" name="items[]" 
+											<td><input type="checkbox" class="company_registered" value="{{ $company->id}}" company-name="{{$company->name}}" name="items[]" 
 											@if(count($company->statuses) > 0)
-												disabled
+												checked
 											@endif
 											/></td>
 											<td><a href="#modal-view-company" data-toggle="modal" data-target="#modal-view-company" name="{{$company->name}}" address="{{$company->address}}" contact="{{$company->contact}}" services="{!! $company->services !!}" >{{ $company->name}} </a></td>
@@ -136,8 +144,9 @@
 				</div>
 				<div class="box-footer register_footer" >
 					<div class="registered" >
-						<button class="btn btn-primary registered_button">Đăng kí</button>
+						
 						<a class="btn btn-warning reset_register_button" >Bỏ chọn</a>
+						<button style="margin-left: 5px" class="btn btn-primary registered_button" max-company="{{App\AdminConfiguration::select('max_register')->first()->max_register}}">Đăng kí</button>
 					</div>
 				</div>
 				<div class="modal fade" id="myConfirmRegister">
@@ -145,7 +154,7 @@
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-								<h4 class="modal-title">Xác nhận</h4>
+								<h3 class="modal-title title-header">Xác nhận</h3>
 							</div>
 							<div class="modal-body">
 								<p class="number_company_register"></p>
@@ -153,7 +162,7 @@
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-default" data-dismiss="modal">Bỏ</button>
-								<button type="submit" class="btn btn-primary" name="apply" value="apply" >Đăng kí</button>
+								<button type="submit" class="btn btn-primary" name="apply" value="apply" >Lưu lại</button>
 							</div>
 						</div><!-- /.modal-content -->
 					</div><!-- /.modal-dialog -->
@@ -161,16 +170,13 @@
 				<!-- Main content -->	
 				</form>
 		</div>
-		@else 
-		<p style="margin:50px">Bạn đã đăng kí tối đa 4 công ty. <a href="#" onclick="window.history.back();">Quay lại</a></p>
-		@endif
 	</div>
 	<div class="modal fade" id="modalError">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title">Thông báo</h4>
+					<h3 class="modal-title title-header">Thông báo</h3>
 				</div>
 				<div class="modal-body">
 					<p>Bạn chưa chọn công ty nào muốn thực tập!</p>
@@ -188,7 +194,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title text-center"></h4>
+					<h3 class="modal-title text-center title-header"></h3>
 				</div>
 				<div class="modal-body">
 					<div class="table-responsive">
@@ -218,5 +224,24 @@
 			</div>
 		</div>
 	</div><!-- End model-->
+	
+	<!--Modal error -->
+	<div class="modal fade" id="errorsRegisModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h3 class="modal-title title-header">Thông báo</h3>
+				</div>
+				<div class="modal-body">
+					<p class="number_company_registered"></p>
+					<p class="text-danger">Bạn đã đăng kí quá nhiều công ty. Mỗi sinh viên chỉ được đăng kí tối đa <span class="max-company-register"></span> công ty </p>					
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
 </section>
 @endsection 

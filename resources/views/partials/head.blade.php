@@ -4,6 +4,7 @@
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<meta content="text/html;charset=utf-8" http-equiv="content-type">
 	<meta content="FitUET - Khoa Công Nghệ Thông Tin - Hệ Thống Đăng Ký Thực Tập" name="description">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<link rel="shortcut icon" href="{{asset('/images/fit.png')}}" type="image/x-icon" />
 	<!-- Bootstrap-->
 	<link href="{{asset('/lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet"/>
@@ -43,7 +44,11 @@
 	<!-- CKeditor , Ckfinder-->
 	<script src="{{asset('/lib/editor/ckeditor/ckeditor.js')}}" type="text/javascript" charset="utf-8" ></script>
 	<script src="{{asset('/lib/editor/ckfinder/ckfinder.js')}}" type="text/javascript" charset="utf-8" ></script>
-	
+	<script>
+		function goBack() {
+			window.history.back();
+		}
+	</script>
 	<script >
 			var baseURL = "{!! url('/')!!}";
 			
@@ -177,7 +182,7 @@
 	 	function saveDataToDatabase(editableObj,column,id,url,name) {
 			var _token =  getToken1(name);
 
-			$(editableObj).css("background","#FFF url('/images/loaderIcon.gif') no-repeat right");
+			$(editableObj).css("background","#FFF url('/public/images/loaderIcon.gif') no-repeat right");
 			var editval = editableObj.innerHTML;
 			if($(editableObj).children().is('select'))
 			{

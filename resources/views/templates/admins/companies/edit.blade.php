@@ -9,6 +9,7 @@
 <div class="row">
 	<div class="col-lg-12">
 		<form action="{{route('admin.companies.update',[$company->id])}}" method="POST" >
+			@include('partials.errors')
 			{!! csrf_field() !!}
 			<div class="box box-success">
 				<div class="box-body">
@@ -44,13 +45,13 @@
 						@endif
 					</div>
 					
-					<div class="form-group{{ $errors->has('description') ? 'has-error' : ''}}">
-						<label for="description">Mô tả công ty và thông tin tuyển dụng</label>
-						<textarea name="description" placeholder="Mô tả ngắn ..."  class="form-control " >{{ old('description',isset($company) ? $company->description : null) }}</textarea>
-						<script type="text/javascript">ckeditor('description'></script>
-						@if($errors->has('description'))
+					<div class="form-group{{ $errors->has('short_description') ? 'has-error' : ''}}">
+						<label for="short_description">Mô tả công ty và thông tin tuyển dụng</label>
+						<textarea name="short_description" placeholder="Mô tả ngắn ..."  class="form-control " >{{ old('short_description',isset($company) ? $company->description : null) }}</textarea>
+						<script type="text/javascript">ckeditor('short_description')</script>
+						@if($errors->has('short_description'))
 							<span class="help-block">
-								<strong>{{ $errors->first('description')}}</strong>	
+								<strong>{{ $errors->first('short_description')}}</strong>	
 							</span>
 						@endif
 					</div>
@@ -77,8 +78,9 @@
 					</div>		          		 												
 				</div>
 				<div class="box-footer">
-					<button type="submit" class="btn btn-primary">Add</button>
+					
 					<button type="reset" class="btn btn-danger">Reset</button>
+					<button type="submit" class="btn btn-primary">Edit</button>
 				</div>
 				<!-- /.box-body -->
 			</div> 

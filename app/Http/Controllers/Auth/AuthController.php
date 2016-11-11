@@ -228,7 +228,11 @@ class AuthController extends Controller
         {
             return back()->withInput()->withErrors($validator);
         }
-        $email = Request::get('email').'@vnu.edu.vn';
+        $email = Request::get('email');
+        if(!strpos($email, '@'))
+        {
+            $email = $email.'@vnu.edu.vn';
+        }
         $credentials = [
             'email'     => $email,
             'password'  => Request::get('password'),

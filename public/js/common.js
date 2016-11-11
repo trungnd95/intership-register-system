@@ -33,13 +33,21 @@ $(document).ready(function(){
 	});
 
 	//Enable data table
-	$('#dataTable').DataTable();	
+	$('#dataTable').DataTable({
+    'paging':true,
+    'lengthMenu': [[2,4,6,-1],[2,4,6,'All']]
+  });	
+  $('#dataTableStatusAdmin').DataTable();
+  $('#dataTableStatusStudent').DataTable();
+  $('#dataTableCompany').DataTable();
+  $('#dataTableStudent').DataTable();
+  $('#dataTableNotification').DataTable();
 
 	//Edit datatable view
 	var html = $('#dataTable_length').find('select').html();
 	html = 'Hiển thị <select  name="dataTable_length" aria-controls="dataTable" class="form-control input-sm">' + html + '</select> kết quả / 1 trang';
     $('#dataTable_length').find('label').html(html);
-    $('#dataTable_info').hide();
+    $('.dataTables_info').hide();
     $('.dataTables_empty').html('Không có dữ liệu');
     
 
